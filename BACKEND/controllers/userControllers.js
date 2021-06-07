@@ -29,7 +29,7 @@ module.exports = {
       res.send('delete error');
     }
   },
-  updateSchool: async (req, res) => {
+  updateUser: async (req, res) => {
     try {
       const user = await User.findByIdAndUpdate(
         req.params.userId,
@@ -42,7 +42,7 @@ module.exports = {
       res.send(error);
     }
   },
-  getSchoolData: async (req, res) => {
+  getUserData: async (req, res) => {
     const { userId } = req.params;
     try {
       const user = await User.findById(userId);
