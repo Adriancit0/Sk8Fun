@@ -10,12 +10,12 @@ function userRouter() {
     .post(userControllers.createUser);
 
   userRoutes
-    .route('/users/:schoolId')
+    .route('/users/:userId')
     .delete(userControllers.deleteUser)
     .put(userControllers.updateUser)
     .get(userControllers.getUserData);
 
-  return schoolRoutes;
+  return userRoutes;
 }
 
 module.exports = userRouter();

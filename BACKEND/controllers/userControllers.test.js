@@ -1,11 +1,11 @@
 const {
-  getAll, createSchool, deleteSchool, updateSchool, getSchoolData
-} = require('./schoolControllers');
-const School = require('../model/schoolModel');
+  getAll, createUser, deleteUser, updateUser, getUserData
+} = require('./userControllers');
+const User = require('../model/userModel');
 
-jest.mock('../model/schoolModel');
+jest.mock('../model/userModel');
 
-describe('schoolController', () => {
+describe('userController', () => {
   describe('Given a getAll function', () => {
     describe('When is invoked', () => {
       let req;
@@ -13,15 +13,15 @@ describe('schoolController', () => {
       describe('And there is not error', () => {
         beforeEach(async () => {
           req = {
-            query: null
+            query: {}
           };
           res = {
             json: jest.fn()
           };
           await getAll(req, res);
         });
-        test('Then call heroFind', () => {
-          expect(School.find).toHaveBeenCalled();
+        test('Then call userFind', () => {
+          expect(User.find).toHaveBeenCalled();
         });
         test('Then call res.json', () => {
           expect(res.json).toHaveBeenCalled();
@@ -31,7 +31,7 @@ describe('schoolController', () => {
       describe('And there is an error', () => {
         beforeEach(async () => {
           req = {
-            query: null
+            query: {}
           };
           res = {
             json: jest.fn(),
@@ -39,7 +39,7 @@ describe('schoolController', () => {
             send: jest.fn()
           };
 
-          School.find.mockRejectedValueOnce('find error');
+          User.find.mockRejectedValueOnce('find error');
 
           await getAll(req, res);
         });
@@ -54,7 +54,7 @@ describe('schoolController', () => {
       });
     });
   });
-  describe('Given a createSchool function', () => {
+  describe('Given a create function', () => {
     describe('When is invoked', () => {
       let req;
       let res;
@@ -67,40 +67,40 @@ describe('schoolController', () => {
             res = {
               json: jest.fn()
             };
-            await createSchool(req, res);
+            await createUser(req, res);
           });
           test('The call res.json', () => {
             expect(res.json).toHaveBeenCalled();
           });
-          test('Then call School.create', () => {
-            expect(School.create).toHaveBeenCalled();
+          test('Then call User.create', () => {
+            expect(User.create).toHaveBeenCalled();
           });
         });
         describe('And there is an error', () => {
           beforeEach(async () => {
             req = {
-              query: null
+              query: {}
             };
             res = {
               json: jest.fn(),
               status: jest.fn(),
               send: jest.fn()
             };
-            School.create.mockRejectedValueOnce('createSchool error');
-            await createSchool(req, res);
+            User.create.mockRejectedValueOnce('createUser error');
+            await createUser(req, res);
           });
           test('The call res.status with 500', () => {
             expect(res.status).toHaveBeenCalledWith(500);
           });
           test('Then call res.send with createTrip error', () => {
-            expect(res.send).toHaveBeenCalledWith('createSchool error');
+            expect(res.send).toHaveBeenCalledWith('createUser error');
           });
           describe('Given a \'deleteById\' function', () => {
             describe('When is invoked', () => {
               describe('And there is no errors', () => {
                 beforeEach(async () => {
                   req = {
-                    params: { schoolId: null }
+                    params: { userId: '' }
                   };
 
                   res = {
@@ -108,7 +108,7 @@ describe('schoolController', () => {
                     send: jest.fn()
                   };
 
-                  await deleteSchool(req, res);
+                  await deleteUser(req, res);
                 });
 
                 test('Then call res.send once', () => {
@@ -119,15 +119,15 @@ describe('schoolController', () => {
                   expect(res.status).toHaveBeenCalledWith(500);
                 });
 
-                test('Then call School.deleteByid', () => {
-                  expect(School.findByIdAndDelete).toHaveBeenCalled();
+                test('Then call User.deleteByid', () => {
+                  expect(User.findByIdAndDelete).toHaveBeenCalled();
                 });
               });
 
               describe('And there is errors', () => {
                 beforeEach(async () => {
                   req = {
-                    params: { schoolId: null }
+                    params: { userId: '' }
                   };
 
                   res = {
@@ -135,9 +135,9 @@ describe('schoolController', () => {
                     send: jest.fn()
                   };
 
-                  School.findByIdAndDelete.mockRejectedValueOnce('delete error');
+                  User.findByIdAndDelete.mockRejectedValueOnce('delete error');
 
-                  await deleteSchool(req, res);
+                  await deleteUser(req, res);
                 });
 
                 test('Then call res.status with 500', () => {
@@ -150,18 +150,18 @@ describe('schoolController', () => {
               });
             });
           });
-          describe('Given a updateSchool function', () => {
+          describe('Given a updateUser function', () => {
             describe('When is invoked', () => {
               describe('And there is no error', () => {
                 beforeEach(async () => {
                   req = {
-                    params: { schoolId: '' }
+                    params: { userId: '' }
                   };
                   res = {
                     json: jest.fn()
                   };
 
-                  await updateSchool(req, res);
+                  await updateUser(req, res);
                 });
 
                 test('Then call res.json once', () => {
@@ -169,14 +169,14 @@ describe('schoolController', () => {
                 });
 
                 test('Then call User.findById', () => {
-                  expect(School.findByIdAndUpdate).toHaveBeenCalled();
+                  expect(User.findByIdAndUpdate).toHaveBeenCalled();
                 });
               });
 
               describe('And there is an error', () => {
                 beforeEach(async () => {
                   req = {
-                    params: { schoolId: '' }
+                    params: { userId: '' }
                   };
                   res = {
                     json: jest.fn(),
@@ -184,9 +184,9 @@ describe('schoolController', () => {
                     send: jest.fn()
                   };
 
-                  School.findByIdAndUpdate.mockRejectedValueOnce('update error');
+                  User.findByIdAndUpdate.mockRejectedValueOnce('update error');
 
-                  await updateSchool(req, res);
+                  await updateUser(req, res);
                 });
 
                 test('Then call res.status with 500', () => {
@@ -203,7 +203,7 @@ describe('schoolController', () => {
       });
     });
   });
-  describe('Given a getSchoolData function', () => {
+  describe('Given a getUserData function', () => {
     describe('When is invoked', () => {
       let req;
       let res;
@@ -211,13 +211,13 @@ describe('schoolController', () => {
       describe('And there is no error', () => {
         beforeEach(async () => {
           req = {
-            params: { schoolId: '' }
+            params: { userId: '' }
           };
           res = {
             json: jest.fn()
           };
 
-          await getSchoolData(req, res);
+          await getUserData(req, res);
         });
 
         test('Then call res.json once', () => {
@@ -225,14 +225,14 @@ describe('schoolController', () => {
         });
 
         test('Then call School.findById', () => {
-          expect(School.findById).toHaveBeenCalled();
+          expect(User.findById).toHaveBeenCalled();
         });
       });
 
       describe('And there is an error', () => {
         beforeEach(async () => {
           req = {
-            params: { schoolId: '' }
+            params: { userId: '' }
           };
           res = {
             json: jest.fn(),
@@ -240,16 +240,16 @@ describe('schoolController', () => {
             send: jest.fn()
           };
 
-          School.findById.mockRejectedValueOnce('find error');
+          User.findById.mockRejectedValueOnce('find error');
 
-          await getSchoolData(req, res);
+          await getUserData(req, res);
         });
 
         test('Then call res.status with 500', () => {
           expect(res.status).toHaveBeenCalledWith(500);
         });
 
-        test('Then call res.send with \'getSchoolData error\'', () => {
+        test('Then call res.send with \'getUserData error\'', () => {
           expect(res.send).toHaveBeenCalledWith('find error');
         });
       });

@@ -6,6 +6,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const schoolRoutes = require('./routers/schoolRoutes');
+const userRoutes = require('./routers/userRoutes');
 
 mongoose.connect(process.env.DDBB_URL,
   {
@@ -20,6 +21,7 @@ server.use(morgan('dev'));
 server.use(express.json());
 
 server.use('/api', schoolRoutes);
+server.use('/api', userRoutes);
 
 server.listen(
   port,
