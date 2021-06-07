@@ -23,7 +23,7 @@
     "start": "nodemon index.js",
     "dev": "set DEBUG=server,server:* && nodemon index.js",
     "dev:debug": "nodemon --inspect-brk index,js",
-    "test": "jest --watchAll -collect--coverage"  },
+    "test": "jest --watchAll --collect-coverage"  },
   "keywords": [],
   "author": "",
   "license": "ISC"
