@@ -1,5 +1,5 @@
 const {
-  getAll, createSchool, deleteSchool, updateSchool
+  getAll, createSchool, deleteSchool, updateSchool, getSchoolData
 } = require('./schoolControllers');
 const School = require('../model/schoolModel');
 
@@ -199,6 +199,58 @@ describe('schoolController', () => {
               });
             });
           });
+        });
+      });
+    });
+  });
+  describe('Given a getSchoolData function', () => {
+    describe('When is invoked', () => {
+      let req;
+      let res;
+
+      describe('And there is no error', () => {
+        beforeEach(async () => {
+          req = {
+            params: { userId: '' }
+          };
+          res = {
+            json: jest.fn()
+          };
+
+          await getSchoolData(req, res);
+        });
+
+        test('Then call res.json once', () => {
+          expect(res.json).toHaveBeenCalled();
+        });
+
+        test('Then call School.findById', () => {
+          expect(School.findById).toHaveBeenCalled();
+        });
+      });
+
+      describe('And there is an error', () => {
+        beforeEach(async () => {
+          req = {
+            params: { userId: '' }
+          };
+          res = {
+            json: jest.fn(),
+            status: jest.fn(),
+            send: jest.fn()
+          };
+
+          School.findById.mockRejectedValueOnce('find error');
+
+          await getSchoolData(req, res);
+        });
+
+        test('Then call res.status with 500', () => {
+          expect(res.status).toHaveBeenCalledWith(500);
+        });
+
+        test('Then call res.send with \'getSchoolData error\'', () => {
+          expect(res.send).toHaveBeenCalledWith('find error');
         });
       });
     });
