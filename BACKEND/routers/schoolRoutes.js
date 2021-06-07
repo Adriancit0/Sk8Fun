@@ -12,7 +12,8 @@ function schoolRouter() {
   schoolRoutes
     .route('/schools/:schoolId')
     .delete(schoolControllers.deleteSchool)
-    .put(schoolControllers.updateSchool);
+    .put(schoolControllers.updateSchool)
+    .get(schoolControllers.getSchoolData);
 
   return schoolRoutes;
 }
