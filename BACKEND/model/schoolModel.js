@@ -4,7 +4,8 @@ const schoolModel = Schema({
   info: {
     name: String,
     phone: Number,
-    mail: String
+    mail: String,
+    address: String
   },
   plant: {
     skateBoards: Boolean,
@@ -14,6 +15,7 @@ const schoolModel = Schema({
     cofeeShop: Boolean
   },
   activities: [{
+    description: String,
     level: String,
     schedule: String,
     price: Number,
