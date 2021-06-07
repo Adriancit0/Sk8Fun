@@ -1,4 +1,6 @@
-const { getAll, createSchool } = require('./schoolControllers');
+const {
+  getAll, createSchool, deleteSchool, updateSchool
+} = require('./schoolControllers');
 const School = require('../model/schoolModel');
 
 jest.mock('../model/schoolmodel.js');
@@ -70,7 +72,7 @@ describe('schoolController', () => {
           test('The call res.json', () => {
             expect(res.json).toHaveBeenCalled();
           });
-          test('Then call Trip.create', () => {
+          test('Then call School.create', () => {
             expect(School.create).toHaveBeenCalled();
           });
         });
@@ -84,14 +86,118 @@ describe('schoolController', () => {
               status: jest.fn(),
               send: jest.fn()
             };
-            School.create.mockRejectedValueOnce('createTrip error');
+            School.create.mockRejectedValueOnce('createSchool error');
             await createSchool(req, res);
           });
           test('The call res.status with 500', () => {
             expect(res.status).toHaveBeenCalledWith(500);
           });
           test('Then call res.send with createTrip error', () => {
-            expect(res.send).toHaveBeenCalledWith('createTrip error');
+            expect(res.send).toHaveBeenCalledWith('createSchool error');
+          });
+          describe('Given a \'deleteById\' function', () => {
+            describe('When is invoked', () => {
+              describe('And there is no errors', () => {
+                beforeEach(async () => {
+                  req = {
+                    params: { schoolId: null }
+                  };
+
+                  res = {
+                    status: jest.fn(),
+                    send: jest.fn()
+                  };
+
+                  await deleteSchool(req, res);
+                });
+
+                test('Then call res.send once', () => {
+                  expect(res.send).toHaveBeenCalled();
+                });
+
+                test('Then call res.status once', () => {
+                  expect(res.status).toHaveBeenCalledWith(500);
+                });
+
+                test('Then call School.deleteByid', () => {
+                  expect(School.findByIdAndDelete).toHaveBeenCalled();
+                });
+              });
+
+              describe('And there is errors', () => {
+                beforeEach(async () => {
+                  req = {
+                    params: { taskId: null }
+                  };
+
+                  res = {
+                    status: jest.fn(),
+                    send: jest.fn()
+                  };
+
+                  School.findByIdAndDelete.mockRejectedValueOnce('delete error');
+
+                  await deleteSchool(req, res);
+                });
+
+                test('Then call res.status with 500', () => {
+                  expect(res.status).toHaveBeenCalledWith(500);
+                });
+
+                test('Then call \'findByIdAndDelete error\'', () => {
+                  expect(res.send).toHaveBeenCalledWith('delete error');
+                });
+              });
+            });
+          });
+          describe('Given a updateSchool function', () => {
+            describe('When is invoked', () => {
+              describe('And there is no error', () => {
+                beforeEach(async () => {
+                  req = {
+                    params: { userId: '' }
+                  };
+                  res = {
+                    json: jest.fn()
+                  };
+
+                  await updateSchool(req, res);
+                });
+
+                test('Then call res.json once', () => {
+                  expect(res.json).toHaveBeenCalled();
+                });
+
+                test('Then call User.findById', () => {
+                  expect(School.findByIdAndUpdate).toHaveBeenCalled();
+                });
+              });
+
+              describe('And there is an error', () => {
+                beforeEach(async () => {
+                  req = {
+                    params: { userId: '' }
+                  };
+                  res = {
+                    json: jest.fn(),
+                    status: jest.fn(),
+                    send: jest.fn()
+                  };
+
+                  School.findByIdAndUpdate.mockRejectedValueOnce('update error');
+
+                  await updateSchool(req, res);
+                });
+
+                test('Then call res.status with 500', () => {
+                  expect(res.status).toHaveBeenCalledWith(500);
+                });
+
+                test('Then call res.send with \'update error\'', () => {
+                  expect(res.send).toHaveBeenCalledWith('update error');
+                });
+              });
+            });
           });
         });
       });

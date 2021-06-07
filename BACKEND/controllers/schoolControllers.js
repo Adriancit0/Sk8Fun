@@ -18,5 +18,28 @@ module.exports = {
       res.status(500);
       res.send('find error');
     }
+  },
+  deleteSchool: async (req, res) => {
+    try {
+      const { schoolId } = req.params;
+      const schoolDeleted = await School.findByIdAndDelete(schoolId);
+      res.json(schoolDeleted);
+    } catch (error) {
+      res.status(500);
+      res.send('delete error');
+    }
+  },
+  updateSchool: async (req, res) => {
+    try {
+      const school = await School.findByIdAndUpdate(
+        req.params.schoolId,
+        req.body,
+        { new: true, useFindAndModify: false }
+      );
+      res.json(school);
+    } catch (error) {
+      res.status(500);
+      res.send(error);
+    }
   }
 };

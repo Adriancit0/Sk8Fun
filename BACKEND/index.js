@@ -19,7 +19,7 @@ server.use(cors());
 server.use(morgan('dev'));
 server.use(express.json());
 
-server.use('/api/schools', schoolRoutes);
+server.use('/api', schoolRoutes);
 
 server.listen(
   port,

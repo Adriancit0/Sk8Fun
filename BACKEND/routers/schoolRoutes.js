@@ -1,14 +1,18 @@
 const { Router } = require('express');
 const schoolControllers = require('../controllers/schoolControllers');
-const schoolController = require('../controllers/schoolControllers');
 
 function schoolRouter() {
   const schoolRoutes = Router();
 
   schoolRoutes
-    .route('/')
+    .route('/schools')
     .get(schoolControllers.getAll)
-    .post(schoolController.createSchool);
+    .post(schoolControllers.createSchool);
+
+  schoolRoutes
+    .route('/schools/:schoolId')
+    .delete(schoolControllers.deleteSchool)
+    .put(schoolControllers.updateSchool);
 
   return schoolRoutes;
 }
