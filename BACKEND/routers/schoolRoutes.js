@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const schoolControllers = require('../controllers/schoolControllers');
 const schoolController = require('../controllers/schoolControllers');
 
 function schoolRouter() {
@@ -6,8 +7,10 @@ function schoolRouter() {
 
   schoolRoutes
     .route('/')
+    .get(schoolControllers.getAll)
     .post(schoolController.createSchool);
 
   return schoolRoutes;
 }
-module.esports = schoolRouter();
+
+module.exports = schoolRouter();
