@@ -5,8 +5,8 @@ const debug = require('debug')('server');
 require('dotenv').config();
 const mongoose = require('mongoose');
 const morgan = require('morgan');
-const schoolRoutes = require('./routers/schoolRoutes');
-const userRoutes = require('./routers/userRoutes');
+const schoolRoutes = require('./src/routers/schoolRoutes');
+const userRoutes = require('./src/routers/userRoutes');
 
 mongoose.connect(process.env.DDBB_URL,
   {
