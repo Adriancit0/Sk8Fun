@@ -8,6 +8,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import SchoolDetails from './components/schoolDetails';
 import configureStore from './redux/store';
+import './App.scss';
 
 function App() {
   return (
