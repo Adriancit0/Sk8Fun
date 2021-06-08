@@ -1,18 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-
-// function userPage() {
-//   return (
-//     <section>
-//       <h1>USER</h1>
-//       <Link to="/">HOME</Link>
-//     </section>
-//   );
-// }
-
-// export default userPage;
-
+import './userPage.scss';
 import { React, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -25,11 +12,16 @@ function schoolList() {
     if (!schools.length) dispatch(getAll());
   }, []);
   return (
-    <section>
+    <section className="user-page">
       <Link to="/">HOME</Link>
-      <h1>SCHOOL LIST</h1>
-      <ul className="school-menu">
-        {schools.map((school) => <li><Link key={school._id} to={`/detail/${school._id}`}>{school.info.name}</Link></li>)}
+      <h1 className="user-page__title">SCHOOL LIST</h1>
+      <ul className="user-page__school-list">
+        {schools.map((school) => (
+          <li key={`element:${school._id}`} className="school-list__school-element">
+            <Link key={school._id} to={`/detail/${school._id}`}>{school.info.name}</Link>
+            <img className="school-element__image" src={school.info.imageUrl} alt={`${school.info.name}Skatepark`} />
+          </li>
+        ))}
       </ul>
     </section>
   );

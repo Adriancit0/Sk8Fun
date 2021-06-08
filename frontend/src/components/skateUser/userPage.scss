@@ -1,0 +1,32 @@
+.user-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-page__school-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.school-list__school-element{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid 2px black;
+}
+
+.school-list__school-element + .school-list__school-element{
+    margin: 2rem
+}
+
+.school-element__image{
+    height: 10rem;
+    width: 10rem;
+    margin: 1rem;
+}
+
