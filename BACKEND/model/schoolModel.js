@@ -6,7 +6,7 @@ const schoolModel = Schema({
     phone: Number,
     mail: String,
     address: String,
-    img: String,
+    imageUrl: String,
     description: String
   },
   plant: {
