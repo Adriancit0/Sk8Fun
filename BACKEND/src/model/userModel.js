@@ -9,4 +9,4 @@ const userModel = Schema({
   interested: [String]
 });
 
-module.exports = model('School', userModel);
+module.exports = model('User', userModel);
