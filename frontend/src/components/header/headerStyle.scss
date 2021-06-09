@@ -1,0 +1,16 @@
+.header{
+    display: flex;
+    background-color: #5d5d5d;
+    color: white;
+    font-size: 1rem;
+    align-items: center;
+    justify-content: space-evenly;
+    .header__nav--home{
+        text-decoration: none;
+        display: flex;
+        background-color: #5d5d5d;
+        color: white;
+        font-size: 1rem;
+    }
+
+}

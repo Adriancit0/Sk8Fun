@@ -43,10 +43,10 @@ module.exports = {
     }
   },
   getSchoolData: async (req, res) => {
-    const { userId } = req.params;
+    const { schoolId } = req.params;
     try {
-      const user = await School.findById(userId);
-      res.json(user);
+      const school = await School.findById(schoolId);
+      res.json(school);
     } catch (error) {
       res.status(500);
       res.send(error);
