@@ -8,26 +8,35 @@ function schoolDetail() {
   const { schoolId } = useParams();
   const dispatch = useDispatch();
   const school = useSelector((store) => store.itemSelected);
-  console.log(school);
-  console.log(schoolId);
+  // const { activities } = school;
   useEffect(() => {
     dispatch(getById(schoolId));
   }, []);
 
   return (
-    <div>
-      <h1>DETAIL</h1>
-      <div>
-        <h2>
-          {school?.info?.name}
-        </h2>
-        <div>
-          <span>id: </span>
-          {school?._id}
-          )
-        </div>
-      </div>
-    </div>
+    <section className="school-detail">
+      <section className="school-detail__school-card">
+        <h3>{school.info?.name}</h3>
+        <ul className="school-card__contact">
+          <h4>Contact</h4>
+          <li>
+            Phone:
+            {' '}
+            {school?.info?.phone}
+          </li>
+          <li>
+            Mail:
+            {' '}
+            {school?.info?.mail}
+          </li>
+          <li>
+            Adress:
+            {' '}
+            {school?.info?.adress}
+          </li>
+        </ul>
+      </section>
+    </section>
   );
 }
 
