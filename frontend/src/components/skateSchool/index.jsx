@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { createItem } from '../../redux/actions/actionsCreators';
 
 function skateSchool() {
-  const itemSelected = useSelector((store) => store.itemSelected);
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -27,6 +26,7 @@ function skateSchool() {
     };
     dispatch(createItem(newSchool));
   }
+  const itemSelected = useSelector((store) => store.itemSelected);
   return (
     <form className="school-creator" onSubmit={handleNewSchoolValues}>
       <label htmlFor="name">
