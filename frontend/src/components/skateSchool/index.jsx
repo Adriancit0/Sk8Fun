@@ -3,6 +3,7 @@ import { React, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { createItem } from '../../redux/actions/actionsCreators';
+import './skateSchoolStyle.scss';
 
 function skateSchool() {
   const dispatch = useDispatch();
