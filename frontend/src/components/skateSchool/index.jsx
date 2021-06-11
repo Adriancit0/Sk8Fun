@@ -1,8 +1,11 @@
+/* eslint-disable no-underscore-dangle */
 import { React, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { createItem } from '../../redux/actions/actionsCreators';
 
 function skateSchool() {
+  const itemSelected = useSelector((store) => store.itemSelected);
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -80,7 +83,9 @@ function skateSchool() {
           onChange={(createEvent) => setImageUrl(createEvent.target.value)}
         />
       </label>
-      <button type="submit">Sumbit</button>
+      <Link to={`/school/${itemSelected?._id}`}>
+        <button type="submit">Sumbit</button>
+      </Link>
     </form>
 
   );

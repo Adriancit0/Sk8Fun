@@ -24,12 +24,12 @@ export function getById(itemId) {
   };
 }
 
-export function createItem(newItem) {
+export function createItem(itemSelected) {
   return async (dispatch) => {
-    const { data } = await axios(url, newItem);
+    const { data } = await axios.post(url, itemSelected);
     dispatch({
       type: actionTypes.CREATE_ITEM,
-      newItem: data
+      itemSelected: data
     });
   };
 }
