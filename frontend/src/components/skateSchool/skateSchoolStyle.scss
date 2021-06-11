@@ -1,0 +1,18 @@
+.school-creator{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;   
+    justify-content: space-evenly;
+    height: 80vh;
+    .school-creator__info-catcher{
+        display: flex;
+        flex-direction: column;
+        margin-left: 2%;
+        justify-content: space-evenly;
+        height: 12vh;
+        input{
+            height: 30px;
+            border-radius: 15px;
+        }
+    }
+}
