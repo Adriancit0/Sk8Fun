@@ -51,7 +51,7 @@ function schoolDetail() {
                 {activity?.level}
               </li>
               <li>
-                Horario:
+                Schedule:
                 {' '}
                 {activity?.schedule}
               </li>
@@ -62,10 +62,21 @@ function schoolDetail() {
                 /
                 {activity?.price?.unity}
               </li>
+              <footer className="activities-item-footer">
+                <button type="button">+</button>
+                <button type="button">-</button>
+                <button type="button">Book</button>
+                <p>
+                  {activity?.likes}
+                  {' '}
+                  has interested in this ofert
+                </p>
+              </footer>
             </ul>
           </li>
         ))}
       </section>
+
     </section>
   );
 }
