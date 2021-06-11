@@ -15,15 +15,21 @@ export function getAll() {
 }
 
 export function getById(itemId) {
-  console.log('soy getbyid');
   return async (dispatch) => {
     const { data } = await axios(`${url}/${itemId}`);
-    console.log(`${url}/${itemId}`);
     dispatch({
       type: actionTypes.GET_BY_ID,
       itemSelected: data
     });
-    console.log('soy controller');
-    console.log(data);
+  };
+}
+
+export function createItem() {
+  return async (dispatch) => {
+    const { data } = await axios(url);
+    dispatch({
+      type: actionTypes.CREATE_ITEM,
+      schoolList: data
+    });
   };
 }

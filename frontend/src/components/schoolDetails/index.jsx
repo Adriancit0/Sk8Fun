@@ -76,7 +76,6 @@ function schoolDetail() {
           </li>
         ))}
       </section>
-
     </section>
   );
 }
