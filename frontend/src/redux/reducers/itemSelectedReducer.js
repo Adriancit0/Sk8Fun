@@ -8,4 +8,5 @@ function itemSelectedReducer(itemSelected = {}, action) {
       return itemSelected;
   }
 }
+
 export default itemSelectedReducer;
