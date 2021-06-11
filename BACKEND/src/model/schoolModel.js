@@ -20,7 +20,10 @@ const schoolModel = Schema({
     description: String,
     level: String,
     schedule: String,
-    price: Number,
+    price: {
+      quantity: Number,
+      unity: String
+    },
     places: Number,
     likes: Number
   }]
