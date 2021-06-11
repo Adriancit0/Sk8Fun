@@ -85,7 +85,7 @@ function skateSchool() {
         />
       </label>
       <Link to={`/school/${itemSelected?._id}`}>
-        <button type="submit">Sumbit</button>
+        <button type="submit">Submit</button>
       </Link>
     </form>
 

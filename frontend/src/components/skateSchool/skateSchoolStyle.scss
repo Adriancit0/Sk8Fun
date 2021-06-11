@@ -4,6 +4,7 @@
     align-items: flex-start;   
     justify-content: space-evenly;
     height: 80vh;
+    background-color: rgb(153,153,153);
     .school-creator__info-catcher{
         display: flex;
         flex-direction: column;
@@ -11,8 +12,13 @@
         justify-content: space-evenly;
         height: 12vh;
         input{
-            height: 30px;
-            border-radius: 15px;
+            height: 2.5rem;
+            border-radius: 1.25rem;
         }
+    }
+    button{
+        height: 2.5rem;
+        width: 5rem;
+        border-radius: 1.25rem;
     }
 }
