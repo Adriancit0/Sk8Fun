@@ -1,0 +1,24 @@
+.school-creator{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;   
+    justify-content: space-evenly;
+    height: 80vh;
+    background-color: rgb(153,153,153);
+    .school-creator__info-catcher{
+        display: flex;
+        flex-direction: column;
+        margin-left: 2%;
+        justify-content: space-evenly;
+        height: 12vh;
+        input{
+            height: 2.5rem;
+            border-radius: 1.25rem;
+        }
+    }
+    button{
+        height: 2.5rem;
+        width: 5rem;
+        border-radius: 1.25rem;
+    }
+}

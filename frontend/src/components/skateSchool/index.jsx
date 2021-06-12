@@ -3,9 +3,9 @@ import { React, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { createItem } from '../../redux/actions/actionsCreators';
+import './skateSchoolStyle.scss';
 
 function skateSchool() {
-  const itemSelected = useSelector((store) => store.itemSelected);
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -27,9 +27,10 @@ function skateSchool() {
     };
     dispatch(createItem(newSchool));
   }
+  const itemSelected = useSelector((store) => store.itemSelected);
   return (
     <form className="school-creator" onSubmit={handleNewSchoolValues}>
-      <label htmlFor="name">
+      <label className="school-creator__info-catcher" htmlFor="name">
         Name:
         <input
           type="text"
@@ -38,7 +39,7 @@ function skateSchool() {
           onChange={(createEvent) => setName(createEvent.target.value)}
         />
       </label>
-      <label htmlFor="name">
+      <label className="school-creator__info-catcher" htmlFor="name">
         Description:
         <input
           type="text"
@@ -47,7 +48,7 @@ function skateSchool() {
           onChange={(createEvent) => setDescription(createEvent.target.value)}
         />
       </label>
-      <label htmlFor="phone">
+      <label className="school-creator__info-catcher" htmlFor="phone">
         Phone:
         <input
           type="text"
@@ -56,7 +57,7 @@ function skateSchool() {
           onChange={(createEvent) => setPhone(createEvent.target.value)}
         />
       </label>
-      <label htmlFor="mail">
+      <label className="school-creator__info-catcher" htmlFor="mail">
         Mail:
         <input
           type="text"
@@ -65,7 +66,7 @@ function skateSchool() {
           onChange={(createEvent) => setMail(createEvent.target.value)}
         />
       </label>
-      <label htmlFor="address">
+      <label className="school-creator__info-catcher" htmlFor="address">
         Address:
         <input
           type="text"
@@ -74,7 +75,7 @@ function skateSchool() {
           onChange={(createEvent) => setAddress(createEvent.target.value)}
         />
       </label>
-      <label htmlFor="imageUrl">
+      <label className="school-creator__info-catcher" htmlFor="imageUrl">
         ImageUrl:
         <input
           type="text"
@@ -84,7 +85,7 @@ function skateSchool() {
         />
       </label>
       <Link to={`/school/${itemSelected?._id}`}>
-        <button type="submit">Sumbit</button>
+        <button type="submit">Submit</button>
       </Link>
     </form>
 
