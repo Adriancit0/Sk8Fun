@@ -16,7 +16,7 @@ describe('Given a skateUser', () => {
       </MemoryRouter>,
       {
         initialState: {
-          schoolList: [{}, { name: 'new school', id: '1' }]
+          schoolList: [{ name: 'new school', id: '1' }]
         }
       }
     );
