@@ -33,7 +33,7 @@ module.exports = {
     try {
       const school = await School.findByIdAndUpdate(
         req.params.schoolId,
-        req.body,
+        { ...req.body },
         { new: true, useFindAndModify: false }
       );
       res.json(school);
