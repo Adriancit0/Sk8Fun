@@ -1,16 +1,18 @@
 /* eslint-disable no-underscore-dangle */
 import { React, useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
 // import { useParams } from 'react-router';
+// import { useDispatch } from 'react-redux';
 // import { updateById } from '../../redux/actions/actionsCreators';
 
 function activityDetail({ activity }) {
   const [imInterested, setImInterested] = useState(true);
   // const { schoolId } = useParams();
-  // const useDispatch = useDispatch();
+  // const dispatch = useDispatch();
   // const school = useSelector((store) => store.itemSelected);
   function handleImInterested() {
     setImInterested(!imInterested);
+    console.log(imInterested);
+    // dispatch(updateById(schoolId));
   }
 
   return (
@@ -40,7 +42,9 @@ function activityDetail({ activity }) {
           <button type="button">+</button>
           <button type="button">-</button>
           <button type="button">Book</button>
-          <button type="button" onClick={handleImInterested}>Im interested</button>
+          <button type="button" onClick={handleImInterested}>
+            {imInterested ? 'Im interested' : 'Im not interested'}
+          </button>
           <p>
             {activity?.likes}
             {' '}
