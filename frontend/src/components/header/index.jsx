@@ -7,6 +7,7 @@ function header() {
     <section className="header">
       <h1>FunnySk8</h1>
       <Link className="header__nav--home" to="/">HOME</Link>
+      <Link className="header__nav--school-list" to="/user">LIST</Link>
     </section>
   );
 }

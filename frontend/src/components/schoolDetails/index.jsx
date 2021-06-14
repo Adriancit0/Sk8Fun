@@ -21,9 +21,9 @@ function schoolDetail() {
   return (
     <section className="school-detail">
       {isDelete ? (
-        <section>
+        <section className="school-detail__modal-comfirm">
           <p>Tu escuela ha sido eliminada</p>
-          <Link to="/"><button type="button">GO HOME</button></Link>
+          <Link to="/"><button className="modal-comfirm__link" type="button">GO HOME</button></Link>
         </section>
       ) : (
         <section className="school-detail__school-card">

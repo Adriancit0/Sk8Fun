@@ -31,9 +31,9 @@ function skateSchool() {
   }
   const itemSelected = useSelector((store) => store.itemSelected);
   return (
-    <section>
+    <section className="school-page">
       {!isCreated ? (
-        <form className="school-creator" onSubmit={handleNewSchoolValues}>
+        <form className="school-page__school-creator" onSubmit={handleNewSchoolValues}>
           <label className="school-creator__info-catcher" htmlFor="name">
             Name:
             <input
@@ -88,13 +88,13 @@ function skateSchool() {
               onChange={(createEvent) => setImageUrl(createEvent.target.value)}
             />
           </label>
-          <button type="submit">Submit</button>
+          <button className="school-creator__submit" type="submit">Submit</button>
         </form>
       ) : (
-        <section>
+        <section className="school-page__confirm-modal">
           <p>Bienvenido a FunnSk8, acabas de registrar una escuela!!!</p>
           <Link to={`/school/${itemSelected?._id}`}>
-            <button type="button">
+            <button className="confirm-modal__link" type="button">
               Go to Details
             </button>
           </Link>
