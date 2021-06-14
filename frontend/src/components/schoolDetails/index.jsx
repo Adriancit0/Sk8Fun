@@ -2,7 +2,7 @@
 import { React, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getById } from '../../redux/actions/actionsCreators';
+import { getById, deleteById } from '../../redux/actions/actionsCreators';
 
 function schoolDetail() {
   const { schoolId } = useParams();
@@ -12,6 +12,9 @@ function schoolDetail() {
   useEffect(() => {
     dispatch(getById(schoolId));
   }, []);
+  function handleDelete(id) {
+    dispatch(deleteById(id));
+  }
 
   return (
     <section className="school-detail">
@@ -75,6 +78,9 @@ function schoolDetail() {
             </ul>
           </li>
         ))}
+        <button type="button" className="school-card__delete-button" onClick={(() => handleDelete(schoolId))}>
+          Delete School
+        </button>
       </section>
     </section>
   );

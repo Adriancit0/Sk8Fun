@@ -6,6 +6,8 @@ function itemSelectedReducer(itemSelected = {}, action) {
       return action.itemSelected;
     case actionTypes.CREATE_ITEM:
       return action.itemSelected;
+    case actionTypes.DELETE_ITEM:
+      return itemSelected;
     default:
       return itemSelected;
   }
