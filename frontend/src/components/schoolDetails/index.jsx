@@ -51,8 +51,8 @@ function schoolDetail() {
             </ul>
           </section>
           <ul className="school-card__activities-list" />
-          {activities?.map((activity) => (
-            <ActivityDetail activity={activity} />
+          {activities?.map((activity, index) => (
+            <ActivityDetail activity={activity} index={index} />
           ))}
           <button type="button" className="school-card__delete-button" onClick={() => handleDelete(schoolId)}>
             Delete School

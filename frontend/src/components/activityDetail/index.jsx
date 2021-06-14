@@ -1,18 +1,29 @@
 /* eslint-disable no-underscore-dangle */
 import { React, useState } from 'react';
-// import { useParams } from 'react-router';
-// import { useDispatch } from 'react-redux';
-// import { updateById } from '../../redux/actions/actionsCreators';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateById } from '../../redux/actions/actionsCreators';
 
-function activityDetail({ activity }) {
-  const [imInterested, setImInterested] = useState(true);
-  // const { schoolId } = useParams();
-  // const dispatch = useDispatch();
-  // const school = useSelector((store) => store.itemSelected);
+function activityDetail({ activity, index }) {
+  const [imInterested, setImInterested] = useState(false);
+  const [currentLike, setCurrentlike] = useState(activity.likes);
+  // const [actualPlaces, setActualPlaces] = useState(0);
+  const dispatch = useDispatch();
+  const school = useSelector((store) => store.itemSelected);
+  const schoolId = school._id;
+
   function handleImInterested() {
     setImInterested(!imInterested);
-    console.log(imInterested);
-    // dispatch(updateById(schoolId));
+    const activities = [...school.activities];
+    if (!imInterested) {
+      const newCurrentLike = currentLike + 1;
+      setCurrentlike(newCurrentLike);
+      activities[index].likes = newCurrentLike;
+    } else {
+      const newCurrentLike = currentLike - 1;
+      setCurrentlike(newCurrentLike);
+      activities[index].likes = newCurrentLike;
+    }
+    dispatch(updateById(schoolId, { activities }));
   }
 
   return (
@@ -43,7 +54,7 @@ function activityDetail({ activity }) {
           <button type="button">-</button>
           <button type="button">Book</button>
           <button type="button" onClick={handleImInterested}>
-            {imInterested ? 'Im interested' : 'Im not interested'}
+            {imInterested ? 'Im not interested' : 'Im interested'}
           </button>
           <p>
             {activity?.likes}
