@@ -3,6 +3,7 @@ import { React, useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getById, deleteById } from '../../redux/actions/actionsCreators';
+import ActivityDetail from '../activityDetail';
 
 function schoolDetail() {
   const [isDelete, setIsDelete] = useState(false);
@@ -51,40 +52,7 @@ function schoolDetail() {
           </section>
           <ul className="school-card__activities-list" />
           {activities?.map((activity) => (
-            <li key={activity?._id} className="activities-list__activitie-item">
-              <ul>
-                <h4>
-                  {activity?.description}
-                </h4>
-                <li>
-                  Level:
-                  {' '}
-                  {activity?.level}
-                </li>
-                <li>
-                  Schedule:
-                  {' '}
-                  {activity?.schedule}
-                </li>
-                <li>
-                  Price:
-                  {' '}
-                  {activity?.price?.quantity}
-                  /
-                  {activity?.price?.unity}
-                </li>
-                <footer className="activities-item-footer">
-                  <button type="button">+</button>
-                  <button type="button">-</button>
-                  <button type="button">Book</button>
-                  <p>
-                    {activity?.likes}
-                    {' '}
-                    has interested in this ofert
-                  </p>
-                </footer>
-              </ul>
-            </li>
+            <ActivityDetail activity={activity} />
           ))}
           <button type="button" className="school-card__delete-button" onClick={() => handleDelete(schoolId)}>
             Delete School
