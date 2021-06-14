@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import { React, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+// import { Link } from 'react-router-dom';
 import { createItem } from '../../redux/actions/actionsCreators';
 import './skateSchoolStyle.scss';
 
@@ -27,7 +27,7 @@ function skateSchool() {
     };
     dispatch(createItem(newSchool));
   }
-  const itemSelected = useSelector((store) => store.itemSelected);
+  // const itemSelected = useSelector((store) => store.itemSelected);
   return (
     <form className="school-creator" onSubmit={handleNewSchoolValues}>
       <label className="school-creator__info-catcher" htmlFor="name">
@@ -84,9 +84,9 @@ function skateSchool() {
           onChange={(createEvent) => setImageUrl(createEvent.target.value)}
         />
       </label>
-      <Link to={`/school/${itemSelected?._id}`}>
-        <button type="submit">Submit</button>
-      </Link>
+
+      <button type="submit">Submit</button>
+
     </form>
 
   );

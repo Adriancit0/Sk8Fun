@@ -36,7 +36,7 @@ export function createItem(itemSelected) {
 
 export function deleteById(itemId) {
   return async (dispatch) => {
-    const { data } = await axios.delete(`${url}${itemId}`);
+    const { data } = await axios.delete(`${url}/${itemId}`);
     dispatch({
       type: actionTypes.DELETE_ITEM,
       itemSelected: data
@@ -44,7 +44,7 @@ export function deleteById(itemId) {
   };
 }
 
-export function updateTask(itemId, propierty) {
+export function updateById(itemId, propierty) {
   return async (dispatch) => {
     const { data } = await axios.put(`${url}/${itemId}`, propierty);
     dispatch({
