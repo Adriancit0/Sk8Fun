@@ -7,7 +7,8 @@ const schoolModel = Schema({
     mail: String,
     address: String,
     imageUrl: String,
-    description: String
+    description: String,
+    adminUser_id: String
   },
   plant: {
     skateBoards: Boolean,
