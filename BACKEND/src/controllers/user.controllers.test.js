@@ -1,7 +1,7 @@
 const {
   getAll, createUser, deleteUser, updateUser, getUserData
-} = require('./userControllers');
-const User = require('../src/model/userModel');
+} = require('./user.controllers');
+const User = require('../model/userModel');
 
 jest.mock('../model/userModel');
 
