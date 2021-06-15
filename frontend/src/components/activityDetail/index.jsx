@@ -42,6 +42,12 @@ function activityDetail({ activity, index }) {
     }
   }
 
+  function Booking() {
+    const activities = [...school.activities];
+    activities[index].places = currentPlaces;
+    dispatch(updateById(schoolId, { activities }));
+  }
+
   return (
     <li key={activity?._id} className="activities-list__activitie-item">
       <ul>
@@ -80,7 +86,7 @@ function activityDetail({ activity, index }) {
             /
             {activity.price.unity}
           </p>
-          <button type="button">Book</button>
+          <button type="button" onClick={Booking}>Book</button>
           <button type="button" onClick={handleImInterested}>
             {imInterested ? 'Im not interested' : 'Im interested'}
           </button>
