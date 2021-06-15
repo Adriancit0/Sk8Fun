@@ -28,12 +28,12 @@ server.use('/', authRoutes);
 
 server.use(
   '/funnySk8',
-  passport.authenticate('jwt', { session: false }),
+  // passport.authenticate('jwt', { session: false }),
   schoolRoutes
 );
 server.use(
   '/funnySk8',
-  passport.authenticate('jwt', { session: false }),
+  // passport.authenticate('jwt', { session: false }),
   userModelRoutes
 );
 server.use(
