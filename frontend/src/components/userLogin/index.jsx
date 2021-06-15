@@ -3,6 +3,14 @@ import { React, useState } from 'react';
 function login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  //   function handleLogin() {
+  //     event.preventDefault();
+  //     const user = {
+  //       email,
+  //       password
+  //     };
+  //     dispatchEvent()
+  //   }
   return (
     <section className="login">
       <form className="login__form">
@@ -16,14 +24,15 @@ function login() {
           />
         </label>
         <label htmlFor="password" className="form__label--password">
-          email:
+          password:
           <input
-            type="text"
+            type="password"
             id="password"
             value={password}
             onChange={(createEvent) => setPassword(createEvent.target.value)}
           />
         </label>
+        <button type="submit">Login</button>
       </form>
     </section>
   );

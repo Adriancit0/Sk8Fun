@@ -1,12 +1,25 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { React, useState } from 'react';
+import UserLogin from '../userLogin';
 
 function funnyHome() {
+  const [accessUser, setAccesUser] = useState(false);
+  function handleUser() {
+    setAccesUser(!accessUser);
+  }
   return (
     <section>
       <h1>HOME</h1>
-      <Link to="/school">SCHOOLS</Link>
-      <Link to="/user">USERS</Link>
+      {
+        accessUser ? (
+          <section>
+            <UserLogin />
+            <button type="button" onClick={handleUser}>Back</button>
+          </section>
+        ) : (
+          <button type="button" onClick={handleUser}>Im User</button>
+        )
+      }
+
     </section>
   );
 }

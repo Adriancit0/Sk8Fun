@@ -6,10 +6,12 @@ import { updateById } from '../../redux/actions/actionsCreators';
 function activityDetail({ activity, index }) {
   const [imInterested, setImInterested] = useState(false);
   const [currentLike, setCurrentlike] = useState(activity.likes);
-  // const [actualPlaces, setActualPlaces] = useState(0);
+  const [currentPriceBook, setCurrentPriceBook] = useState(0);
+  const [currentPlaces, setCurrentPLaces] = useState(activity.places);
   const dispatch = useDispatch();
   const school = useSelector((store) => store.itemSelected);
   const schoolId = school._id;
+  const unityPrice = activity.price.quantity;
 
   function handleImInterested() {
     setImInterested(!imInterested);
@@ -24,6 +26,20 @@ function activityDetail({ activity, index }) {
       activities[index].likes = newCurrentLike;
     }
     dispatch(updateById(schoolId, { activities }));
+  }
+
+  function sumPrice() {
+    if (currentPlaces > 0) {
+      setCurrentPriceBook(currentPriceBook + unityPrice);
+      setCurrentPLaces(currentPlaces - 1);
+    }
+  }
+
+  function substracPrice() {
+    if (currentPriceBook > 0) {
+      setCurrentPriceBook(currentPriceBook - unityPrice);
+      setCurrentPLaces(currentPlaces + 1);
+    }
   }
 
   return (
@@ -49,9 +65,21 @@ function activityDetail({ activity, index }) {
           /
           {activity?.price?.unity}
         </li>
+        <li>
+          Places:
+          {' '}
+          {currentPlaces}
+        </li>
         <footer className="activities-item-footer">
-          <button type="button">+</button>
-          <button type="button">-</button>
+          <button type="button" onClick={sumPrice}>+</button>
+          <button type="button" onClick={substracPrice}>-</button>
+          <p>
+            Price:
+            {' '}
+            {currentPriceBook}
+            /
+            {activity.price.unity}
+          </p>
           <button type="button">Book</button>
           <button type="button" onClick={handleImInterested}>
             {imInterested ? 'Im not interested' : 'Im interested'}
