@@ -9,7 +9,7 @@ function skateSchool() {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [mail, setMail] = useState('');
+  const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [description, setDescription] = useState('');
@@ -21,7 +21,7 @@ function skateSchool() {
         name,
         description,
         phone,
-        mail,
+        email,
         imageUrl,
         address
       }
@@ -61,13 +61,13 @@ function skateSchool() {
               onChange={(createEvent) => setPhone(createEvent.target.value)}
             />
           </label>
-          <label className="school-creator__info-catcher" htmlFor="mail">
+          <label className="school-creator__info-catcher" htmlFor="email">
             Mail:
             <input
               type="text"
-              id="mail"
-              value={mail}
-              onChange={(createEvent) => setMail(createEvent.target.value)}
+              id="email"
+              value={email}
+              onChange={(createEvent) => setEmail(createEvent.target.value)}
             />
           </label>
           <label className="school-creator__info-catcher" htmlFor="address">
