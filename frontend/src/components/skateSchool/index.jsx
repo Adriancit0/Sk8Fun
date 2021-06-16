@@ -3,13 +3,15 @@ import { React, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { createItem } from '../../redux/actions/actionsCreators';
+import StandardButton from '../button';
+import InputSection from '../inputSection';
 import './skateSchoolStyle.scss';
 
 function skateSchool() {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [mail, setMail] = useState('');
+  const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [description, setDescription] = useState('');
@@ -21,7 +23,7 @@ function skateSchool() {
         name,
         description,
         phone,
-        mail,
+        email,
         imageUrl,
         address
       }
@@ -34,69 +36,19 @@ function skateSchool() {
     <section className="school-page">
       {!isCreated ? (
         <form className="school-page__school-creator" onSubmit={handleNewSchoolValues}>
-          <label className="school-creator__info-catcher" htmlFor="name">
-            Name:
-            <input
-              type="text"
-              id="name"
-              value={name}
-              onChange={(createEvent) => setName(createEvent.target.value)}
-            />
-          </label>
-          <label className="school-creator__info-catcher" htmlFor="name">
-            Description:
-            <input
-              type="text"
-              id="description"
-              value={description}
-              onChange={(createEvent) => setDescription(createEvent.target.value)}
-            />
-          </label>
-          <label className="school-creator__info-catcher" htmlFor="phone">
-            Phone:
-            <input
-              type="text"
-              id="phone"
-              value={phone}
-              onChange={(createEvent) => setPhone(createEvent.target.value)}
-            />
-          </label>
-          <label className="school-creator__info-catcher" htmlFor="mail">
-            Mail:
-            <input
-              type="text"
-              id="mail"
-              value={mail}
-              onChange={(createEvent) => setMail(createEvent.target.value)}
-            />
-          </label>
-          <label className="school-creator__info-catcher" htmlFor="address">
-            Address:
-            <input
-              type="text"
-              id="address"
-              value={address}
-              onChange={(createEvent) => setAddress(createEvent.target.value)}
-            />
-          </label>
-          <label className="school-creator__info-catcher" htmlFor="imageUrl">
-            ImageUrl:
-            <input
-              type="text"
-              id="imageUrl"
-              value={imageUrl}
-              onChange={(createEvent) => setImageUrl(createEvent.target.value)}
-            />
-          </label>
-          <button className="school-creator__submit" type="submit">Submit</button>
+          <InputSection htmlFor="name" type="text" id="name" value={name} functionName={setName} content="Name:" />
+          <InputSection htmlFor="phone" type="text" id="phone" value={phone} functionName={setPhone} content="Phone:" />
+          <InputSection htmlFor="email" type="text" id="email" value={email} functionName={setEmail} content="Email:" />
+          <InputSection htmlFor="address" type="text" id="address" value={address} functionName={setAddress} content="Address:" />
+          <InputSection htmlFor="imageUrl" type="text" id="imageUrl" value={imageUrl} functionName={setImageUrl} content="Image Url:" />
+          <InputSection htmlFor="description" type="text" id="description" value={description} functionName={setDescription} content="Description:" />
+          <StandardButton className="school-creator__submit" type="submit" content="Submit" />
         </form>
       ) : (
         <section className="school-page__confirm-modal">
           <p>Bienvenido a FunnSk8, acabas de registrar una escuela!!!</p>
           <Link to={`/school/${itemSelected?._id}`}>
-            <button className="confirm-modal__link" type="button">
-              Go to Details
-            </button>
+            <StandardButton className="confirm-modal__link" type="button" content="Go to Details" />
           </Link>
         </section>
       )}

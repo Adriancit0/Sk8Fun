@@ -40,7 +40,7 @@ authRoutes.post(
               const token = jwt.sign(
                 { user: data },
                 process.env.JWT_SECRET,
-                { expiresIn: '1m' }
+                { expiresIn: '60m' }
               );
               const refreshToken = jwt.sign(
                 { user: data },
@@ -84,7 +84,7 @@ authRoutes.post('/token', (req, res) => {
     const accessToken = jwt.sign(
       { user: data },
       process.env.JWT_SECRET,
-      { expiresIn: '1m' }
+      { expiresIn: '60m' }
     );
 
     return res.json({
