@@ -78,8 +78,8 @@ function activityDetail({ activity, index }) {
           {currentPlaces}
         </li>
         <footer className="activities-item-footer">
-          <StandardButton functionName={sumPrice} content="+" />
-          <StandardButton functionName={substracPrice} content="-" />
+          <StandardButton type="button" functionName={sumPrice} content="+" />
+          <StandardButton type="button" functionName={substracPrice} content="-" />
           <p>
             Price:
             {' '}
@@ -87,8 +87,8 @@ function activityDetail({ activity, index }) {
             /
             {activity?.price?.unity}
           </p>
-          <StandardButton functionName={Booking} content=" Book " />
-          <StandardButton functionName={handleImInterested} content={imInterested ? ' Im not interested ' : ' Im interested '} />
+          <StandardButton type="button" functionName={Booking} content=" Book " />
+          <StandardButton type="button" functionName={handleImInterested} content={imInterested ? ' Im not interested ' : ' Im interested '} />
           <p>
             {activity?.likes}
             {' '}

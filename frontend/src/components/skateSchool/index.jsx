@@ -3,6 +3,7 @@ import { React, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { createItem } from '../../redux/actions/actionsCreators';
+import StandardButton from '../button';
 import './skateSchoolStyle.scss';
 
 function skateSchool() {
@@ -88,15 +89,13 @@ function skateSchool() {
               onChange={(createEvent) => setImageUrl(createEvent.target.value)}
             />
           </label>
-          <button className="school-creator__submit" type="submit">Submit</button>
+          <StandardButton className="school-creator__submit" type="submit" content="Submit" />
         </form>
       ) : (
         <section className="school-page__confirm-modal">
           <p>Bienvenido a FunnSk8, acabas de registrar una escuela!!!</p>
           <Link to={`/school/${itemSelected?._id}`}>
-            <button className="confirm-modal__link" type="button">
-              Go to Details
-            </button>
+            <StandardButton className="confirm-modal__link" type="button" content="Go to Details" />
           </Link>
         </section>
       )}

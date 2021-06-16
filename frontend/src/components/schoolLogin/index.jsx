@@ -1,4 +1,7 @@
 import { React, useState } from 'react';
+import { Link } from 'react-router-dom';
+import InputSection from '../inputSection';
+import StandardButton from '../button';
 
 function login() {
   const [email, setEmail] = useState('');
@@ -13,26 +16,13 @@ function login() {
   //   }
   return (
     <section className="login">
+      <h2>Register your school</h2>
       <form className="login__form">
-        <label htmlFor="email" className="form__label--email">
-          email:
-          <input
-            type="text"
-            id="email"
-            value={email}
-            onChange={(createEvent) => setEmail(createEvent.target.value)}
-          />
-        </label>
-        <label htmlFor="password" className="form__label--password">
-          password:
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(createEvent) => setPassword(createEvent.target.value)}
-          />
-        </label>
-        <button type="submit">Login</button>
+        <InputSection htmlFor="email" type="text" id="email" value={email} functionName={setEmail} content="Email" />
+        <InputSection htmlFor="password" type="password" id="password" value={password} functionName={setPassword} content="Password" />
+        <Link to="/school">
+          <StandardButton type="submit" content="Login" />
+        </Link>
       </form>
     </section>
   );

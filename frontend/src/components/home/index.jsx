@@ -1,6 +1,7 @@
 import { React, useState } from 'react';
 import UserLogin from '../userLogin';
 import SchoolLogin from '../schoolLogin';
+import StandardButton from '../button';
 
 function funnyHome() {
   const [accessUser, setAccesUser] = useState(false);
@@ -18,11 +19,11 @@ function funnyHome() {
         {
         accessUser ? (
           <section>
-            <button type="button" onClick={handleUser}>Back</button>
+            <StandardButton type="button" functionName={handleUser} content="Back" />
             <UserLogin />
           </section>
         ) : (
-          <button type="button" onClick={handleUser}>Im User</button>
+          <StandardButton type="button" functionName={handleUser} content="Im User" />
         )
         }
       </section>
@@ -30,11 +31,11 @@ function funnyHome() {
         {
         accessSchool ? (
           <section>
-            <button type="button" onClick={handleSchool}>Back</button>
+            <StandardButton type="button" functionName={handleSchool} content="Back" />
             <SchoolLogin />
           </section>
         ) : (
-          <button type="button" onClick={handleSchool}>Im School</button>
+          <StandardButton type="button" functionName={handleSchool} content="Im School" />
         )
         }
       </section>

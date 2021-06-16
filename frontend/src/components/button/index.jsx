@@ -3,10 +3,9 @@
 import React from 'react';
 import './buttonStyle.scss';
 
-function standardButton({ content, functionName }) {
+function standardButton({ type, content, functionName }) {
   return (
-    <button type="button" className="standard-button" onClick={functionName}>{content}</button>
-
+    <button type={type} className="standard-button" onClick={functionName}>{content}</button>
   );
 }
 
