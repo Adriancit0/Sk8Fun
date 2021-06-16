@@ -7,11 +7,13 @@ function inputSection({
   htmlFor, type, content, id, value, functionName
 }) {
   return (
-    <label
-      className="input-section"
-      htmlFor={htmlFor}
-    >
-      {content}
+    <section className="input-section">
+      <label
+        className="input-section__label"
+        htmlFor={htmlFor}
+      >
+        {content}
+      </label>
       <input
         className="input-section__input"
         type={type}
@@ -19,7 +21,7 @@ function inputSection({
         value={value}
         onChange={(createEvent) => functionName(createEvent.target.value)}
       />
-    </label>
+    </section>
   );
 }
 

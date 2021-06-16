@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { createItem } from '../../redux/actions/actionsCreators';
 import StandardButton from '../button';
+import InputSection from '../inputSection';
 import './skateSchoolStyle.scss';
 
 function skateSchool() {
@@ -35,60 +36,12 @@ function skateSchool() {
     <section className="school-page">
       {!isCreated ? (
         <form className="school-page__school-creator" onSubmit={handleNewSchoolValues}>
-          <label className="school-creator__info-catcher" htmlFor="name">
-            Name:
-            <input
-              type="text"
-              id="name"
-              value={name}
-              onChange={(createEvent) => setName(createEvent.target.value)}
-            />
-          </label>
-          <label className="school-creator__info-catcher" htmlFor="name">
-            Description:
-            <input
-              type="text"
-              id="description"
-              value={description}
-              onChange={(createEvent) => setDescription(createEvent.target.value)}
-            />
-          </label>
-          <label className="school-creator__info-catcher" htmlFor="phone">
-            Phone:
-            <input
-              type="text"
-              id="phone"
-              value={phone}
-              onChange={(createEvent) => setPhone(createEvent.target.value)}
-            />
-          </label>
-          <label className="school-creator__info-catcher" htmlFor="email">
-            Mail:
-            <input
-              type="text"
-              id="email"
-              value={email}
-              onChange={(createEvent) => setEmail(createEvent.target.value)}
-            />
-          </label>
-          <label className="school-creator__info-catcher" htmlFor="address">
-            Address:
-            <input
-              type="text"
-              id="address"
-              value={address}
-              onChange={(createEvent) => setAddress(createEvent.target.value)}
-            />
-          </label>
-          <label className="school-creator__info-catcher" htmlFor="imageUrl">
-            ImageUrl:
-            <input
-              type="text"
-              id="imageUrl"
-              value={imageUrl}
-              onChange={(createEvent) => setImageUrl(createEvent.target.value)}
-            />
-          </label>
+          <InputSection htmlFor="name" type="text" id="name" value={name} functionName={setName} content="Name:" />
+          <InputSection htmlFor="phone" type="text" id="phone" value={phone} functionName={setPhone} content="Phone:" />
+          <InputSection htmlFor="email" type="text" id="email" value={email} functionName={setEmail} content="Email:" />
+          <InputSection htmlFor="address" type="text" id="address" value={address} functionName={setAddress} content="Address:" />
+          <InputSection htmlFor="imageUrl" type="text" id="imageUrl" value={imageUrl} functionName={setImageUrl} content="Image Url:" />
+          <InputSection htmlFor="description" type="text" id="description" value={description} functionName={setDescription} content="Description:" />
           <StandardButton className="school-creator__submit" type="submit" content="Submit" />
         </form>
       ) : (
