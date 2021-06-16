@@ -2,6 +2,7 @@
 import { React, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateById } from '../../redux/actions/actionsCreators';
+import StandardButton from '../button';
 
 function activityDetail({ activity, index }) {
   const [imInterested, setImInterested] = useState(false);
@@ -77,8 +78,8 @@ function activityDetail({ activity, index }) {
           {currentPlaces}
         </li>
         <footer className="activities-item-footer">
-          <button type="button" onClick={sumPrice}>+</button>
-          <button type="button" onClick={substracPrice}>-</button>
+          <StandardButton functionName={sumPrice} content="+" />
+          <StandardButton functionName={substracPrice} content="-" />
           <p>
             Price:
             {' '}
@@ -86,10 +87,8 @@ function activityDetail({ activity, index }) {
             /
             {activity?.price?.unity}
           </p>
-          <button type="button" onClick={Booking}>Book</button>
-          <button type="button" onClick={handleImInterested}>
-            {imInterested ? 'Im not interested' : 'Im interested'}
-          </button>
+          <StandardButton functionName={Booking} content=" Book " />
+          <StandardButton functionName={handleImInterested} content={imInterested ? ' Im not interested ' : ' Im interested '} />
           <p>
             {activity?.likes}
             {' '}
