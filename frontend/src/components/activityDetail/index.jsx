@@ -11,7 +11,7 @@ function activityDetail({ activity, index }) {
   const dispatch = useDispatch();
   const school = useSelector((store) => store.itemSelected);
   const schoolId = school._id;
-  const unityPrice = activity.price.quantity;
+  const unityPrice = activity?.price?.quantity;
 
   function handleImInterested() {
     setImInterested(!imInterested);
@@ -84,7 +84,7 @@ function activityDetail({ activity, index }) {
             {' '}
             {currentPriceBook}
             /
-            {activity.price.unity}
+            {activity?.price?.unity}
           </p>
           <button type="button" onClick={Booking}>Book</button>
           <button type="button" onClick={handleImInterested}>
