@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getById, deleteById } from '../../redux/actions/actionsCreators';
 import ActivityDetail from '../activityDetail';
 import StandardButton from '../button';
+import './schoolDetailStyle.scss';
 
 function schoolDetail() {
   const [isDelete, setIsDelete] = useState(false);
@@ -29,7 +30,7 @@ function schoolDetail() {
         </section>
       ) : (
         <section className="school-detail__school-card">
-          <h3>{school.info?.name}</h3>
+          <h3 className="school-card__title">{school.info?.name}</h3>
           <section className="school-card__school-info">
             <img className="school-info__image" src={school?.info?.imageUrl} alt="skatepark" />
             <ul className="school-info__contact">
@@ -51,10 +52,18 @@ function schoolDetail() {
               </li>
             </ul>
           </section>
-          <ul className="school-card__activities-list" />
-          {activities?.map((activity, index) => (
-            <ActivityDetail activity={activity} index={index} />
-          ))}
+          <section className="school-card__description">
+            {school?.info?.description}
+          </section>
+          {activities?.length > 1 ? (
+            <ul className="school-card__activities-list">
+              {activities?.map((activity, index) => (
+                <ActivityDetail activity={activity} index={index} />
+              ))}
+            </ul>
+          ) : (
+            <p>En estos momentos no tenemos actividades disponibles</p>
+          )}
           <StandardButton type="button" className="school-card__delete-button" functionName={() => handleDelete(schoolId)} content="Delete School" />
         </section>
       )}

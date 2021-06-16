@@ -1,0 +1,35 @@
+.activities-list__activity-item{
+    align-self: center;
+    width: 88%;
+    display: flex;
+    list-style: none;    
+    border-radius: 1rem;
+    margin: 1rem;
+    background: rgb(204, 204, 233);
+    .activity-item__info-list{
+        margin-left: 1rem;
+        list-style: none;
+        li{
+            align-self: center;
+            list-style: none;
+            
+        }
+    }
+    .activities-item__footer{
+        .footer__sum-sub-buttons{
+            display: flex;
+            justify-content: space-between;
+            margin: 0.5rem;
+            
+        }
+        .footer__book-like-buttons{
+            display: flex;
+            justify-content: space-between;
+            margin: 0.5rem;            
+        }
+        p{
+            margin:0.1rem
+        }
+    }
+ 
+}

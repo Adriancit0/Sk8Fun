@@ -1,0 +1,36 @@
+.school-detail__school-card{
+    .school-card__title{
+        margin-bottom: -5%;
+        z-index:1;
+    }
+    .school-card__school-info{
+        display: flex;
+        .school-info__image{
+            width: 100%;
+            margin-top: -4px;
+            margin-bottom: 23px;
+        }
+        .school-info__contact{
+            margin-left:-50%;
+            margin-top:30%;
+            li{
+                margin-bottom:1%;
+                list-style: none;
+            }
+            h4{
+                margin-bottom: 2%;
+            }
+        }
+    }
+    .school-card__description{
+        margin: 1rem;
+    }
+    p{
+        margin: 1rem;
+    }
+    .school-card__activities-list{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+}       

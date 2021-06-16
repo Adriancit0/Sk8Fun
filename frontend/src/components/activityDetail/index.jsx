@@ -3,6 +3,7 @@ import { React, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateById } from '../../redux/actions/actionsCreators';
 import StandardButton from '../button';
+import './activityDetailStyle.scss';
 
 function activityDetail({ activity, index }) {
   const [imInterested, setImInterested] = useState(false);
@@ -50,8 +51,8 @@ function activityDetail({ activity, index }) {
   }
 
   return (
-    <li key={activity?._id} className="activities-list__activitie-item">
-      <ul>
+    <li key={activity?._id} className="activities-list__activity-item">
+      <ul className="activity-item__info-list">
         <h4>
           {activity?.description}
         </h4>
@@ -77,9 +78,11 @@ function activityDetail({ activity, index }) {
           {' '}
           {currentPlaces}
         </li>
-        <footer className="activities-item-footer">
-          <StandardButton type="button" functionName={sumPrice} content="+" />
-          <StandardButton type="button" functionName={substracPrice} content="-" />
+        <footer className="activities-item__footer">
+          <section className="footer__sum-sub-buttons">
+            <StandardButton type="button" functionName={sumPrice} content="+" />
+            <StandardButton type="button" functionName={substracPrice} content="-" />
+          </section>
           <p>
             Price:
             {' '}
@@ -87,8 +90,10 @@ function activityDetail({ activity, index }) {
             /
             {activity?.price?.unity}
           </p>
-          <StandardButton type="button" functionName={Booking} content=" Book " />
-          <StandardButton type="button" functionName={handleImInterested} content={imInterested ? ' Im not interested ' : ' Im interested '} />
+          <section className="footer__book-like-buttons">
+            <StandardButton type="button" functionName={Booking} content=" Book " />
+            <StandardButton type="button" functionName={handleImInterested} content={imInterested ? ' Im not interested ' : ' Im interested '} />
+          </section>
           <p>
             {activity?.likes}
             {' '}
