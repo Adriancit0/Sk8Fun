@@ -24,11 +24,11 @@ function schoolList() {
           <li key={`element:${school?._id}`} className="school-list__school-element">
             <h3>{school?.info?.name}</h3>
             <img className="school-element__image" src={school?.info?.imageUrl} alt={`${school?.info?.name}Skatepark`} />
-            <section>
-              <i className="far fa-heart" />
-              <FontAwesomeIcon className="list--side-item-icon" icon={faHeart} />
+            <section className="school-element__footer-card">
+              <FontAwesomeIcon className="footer-card__icon" icon={faHeart} />
               {' '}
-              <Link className="school-list__nav" key={school?._id} to={`/school/${school?._id}`}>
+              <p>{school?.popularity}</p>
+              <Link className="footer-card__nav" key={school?._id} to={`/school/${school?._id}`}>
                 Details
               </Link>
             </section>
