@@ -52,7 +52,6 @@ function activityDetail({ activity, index }) {
     activities[index].places = currentPlaces;
     dispatch(updateById(schoolId, { activities }));
   }
-  console.log(school?.popularity);
   return (
     <li key={activity?._id} className="activities-list__activity-item">
       <ul className="activity-item__info-list">
