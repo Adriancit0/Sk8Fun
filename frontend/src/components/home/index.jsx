@@ -2,6 +2,7 @@ import { React, useState } from 'react';
 import UserLogin from '../userLogin';
 import SchoolLogin from '../schoolLogin';
 import StandardButton from '../button';
+import './homeStyle.scss';
 
 function funnyHome() {
   const [accessUser, setAccesUser] = useState(false);
@@ -13,8 +14,8 @@ function funnyHome() {
     setAccesSchool(!accessSchool);
   }
   return (
-    <section>
-      <h1>HOME</h1>
+    <section className="home-page">
+      <h2 className="home-page__title">Horarios de actividades de skate en Madrid</h2>
       <section>
         {
         accessUser ? (
