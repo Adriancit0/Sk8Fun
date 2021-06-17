@@ -58,7 +58,7 @@ function schoolDetail() {
           {activities?.length > 1 ? (
             <ul className="school-card__activities-list">
               {activities?.map((activity, index) => (
-                <ActivityDetail activity={activity} index={index} />
+                <ActivityDetail key={activity?._id} activity={activity} index={index} />
               ))}
             </ul>
           ) : (

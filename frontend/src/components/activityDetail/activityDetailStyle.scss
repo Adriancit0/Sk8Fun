@@ -5,9 +5,9 @@
     list-style: none;    
     border-radius: 1rem;
     margin: 1rem;
-    background: rgb(204, 204, 233);
+    border: 2px solid rgb(255,96,119);
     .activity-item__info-list{
-        margin-left: 1rem;
+        margin: 1rem;
         list-style: none;
         li{
             align-self: center;
@@ -25,10 +25,27 @@
         .footer__book-like-buttons{
             display: flex;
             justify-content: space-between;
-            margin: 0.5rem;            
+            margin: 0.5rem;     
+            .book-like-buttons__like{
+                color: rgb(255,96,119);
+                font-weight: 700;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 1rem;
+                margin-left: 1rem;
+                border: none;
+                border-radius: 0.5rem;
+                background-color: white;
+                height: 2rem;
+                min-width: 7rem;
+                align-self: center;
+                border: 2px solid rgb(255,96,119);
+            } 
         }
         p{
-            margin:0.1rem
+            margin:0.1rem;
+            margin-bottom: 1rem;
         }
     }
  
