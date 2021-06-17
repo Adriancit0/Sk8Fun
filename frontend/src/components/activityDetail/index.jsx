@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateById } from '../../redux/actions/actionsCreators';
+import { getById, updateById } from '../../redux/actions/actionsCreators';
 import StandardButton from '../button';
 import './activityDetailStyle.scss';
 
@@ -17,17 +17,20 @@ function activityDetail({ activity, index }) {
 
   function handleImInterested() {
     setImInterested(!imInterested);
+    let { popularity } = school;
     const activities = [...school.activities];
     if (!imInterested) {
       const newCurrentLike = currentLike + 1;
+      popularity += 1;
       setCurrentlike(newCurrentLike);
       activities[index].likes = newCurrentLike;
     } else {
       const newCurrentLike = currentLike - 1;
+      popularity -= 1;
       setCurrentlike(newCurrentLike);
       activities[index].likes = newCurrentLike;
     }
-    dispatch(updateById(schoolId, { activities }));
+    dispatch(updateById(schoolId, { activities, popularity }));
   }
 
   function sumPrice() {
@@ -50,6 +53,10 @@ function activityDetail({ activity, index }) {
     dispatch(updateById(schoolId, { activities }));
   }
 
+  useEffect(() => {
+    dispatch(getById(schoolId));
+  }, []);
+
   return (
     <li key={activity?._id} className="activities-list__activity-item">
       <ul className="activity-item__info-list">
@@ -57,24 +64,23 @@ function activityDetail({ activity, index }) {
           {activity?.description}
         </h4>
         <li>
-          Level:
+          Nivel:
           {' '}
           {activity?.level}
         </li>
         <li>
-          Schedule:
+          Horario:
           {' '}
           {activity?.schedule}
         </li>
         <li>
-          Price:
+          Precio:
           {' '}
           {activity?.price?.quantity}
-          /
           {activity?.price?.unity}
         </li>
         <li>
-          Places:
+          Plazas:
           {' '}
           {currentPlaces}
         </li>
@@ -92,12 +98,18 @@ function activityDetail({ activity, index }) {
           </p>
           <section className="footer__book-like-buttons">
             <StandardButton type="button" functionName={Booking} content=" Book " />
-            <StandardButton type="button" functionName={handleImInterested} content={imInterested ? ' Im not interested ' : ' Im interested '} />
+            <button
+              className="book-like-buttons__like"
+              type="button"
+              onClick={handleImInterested}
+            >
+              {imInterested ? ' Im not interested ' : ' Im interested '}
+            </button>
           </section>
           <p>
             {activity?.likes}
             {' '}
-            has interested in this ofert
+            personas interesadas en esta oferta
           </p>
         </footer>
       </ul>

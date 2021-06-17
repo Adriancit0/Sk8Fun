@@ -1,9 +1,18 @@
 import { React, useState } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
 import UserLogin from '../userLogin';
 import SchoolLogin from '../schoolLogin';
 import StandardButton from '../button';
+import './homeStyle.scss';
+// import { getAll } from '../../redux/actions/actionsCreators';
 
 function funnyHome() {
+  // const dispatch = useDispatch();
+  // const schools = useSelector((store) => store.schoolList);
+  // useEffect(() => {
+  //   if (!schools.length) dispatch(getAll());
+  // }, []);
+
   const [accessUser, setAccesUser] = useState(false);
   const [accessSchool, setAccesSchool] = useState(false);
   function handleUser() {
@@ -13,8 +22,9 @@ function funnyHome() {
     setAccesSchool(!accessSchool);
   }
   return (
-    <section>
-      <h1>HOME</h1>
+    <section className="home-page">
+      <h2 className="home-page__title">Horarios de actividades de skate en Madrid</h2>
+      <p className="home-page__subtitle">¿Elige la actividad dirigida en el horario que mejor se adapte a ti!</p>
       <section>
         {
         accessUser ? (
