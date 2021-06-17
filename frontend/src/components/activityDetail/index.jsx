@@ -14,20 +14,23 @@ function activityDetail({ activity, index }) {
   const school = useSelector((store) => store.itemSelected);
   const schoolId = school._id;
   const unityPrice = activity?.price?.quantity;
-
   function handleImInterested() {
     setImInterested(!imInterested);
+    let { popularity } = school;
     const activities = [...school.activities];
     if (!imInterested) {
       const newCurrentLike = currentLike + 1;
+      popularity += 1;
       setCurrentlike(newCurrentLike);
       activities[index].likes = newCurrentLike;
     } else {
       const newCurrentLike = currentLike - 1;
+      popularity -= 1;
       setCurrentlike(newCurrentLike);
       activities[index].likes = newCurrentLike;
     }
     dispatch(updateById(schoolId, { activities }));
+    dispatch(updateById(schoolId, { popularity }));
   }
 
   function sumPrice() {
@@ -49,7 +52,7 @@ function activityDetail({ activity, index }) {
     activities[index].places = currentPlaces;
     dispatch(updateById(schoolId, { activities }));
   }
-
+  console.log(school?.popularity);
   return (
     <li key={activity?._id} className="activities-list__activity-item">
       <ul className="activity-item__info-list">

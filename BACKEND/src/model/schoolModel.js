@@ -27,7 +27,8 @@ const schoolModel = Schema({
     },
     places: Number,
     likes: Number
-  }]
+  }],
+  popularity: Number
 });
 
 module.exports = model('School', schoolModel);

@@ -1,10 +1,18 @@
 import { React, useState } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
 import UserLogin from '../userLogin';
 import SchoolLogin from '../schoolLogin';
 import StandardButton from '../button';
 import './homeStyle.scss';
+// import { getAll } from '../../redux/actions/actionsCreators';
 
 function funnyHome() {
+  // const dispatch = useDispatch();
+  // const schools = useSelector((store) => store.schoolList);
+  // useEffect(() => {
+  //   if (!schools.length) dispatch(getAll());
+  // }, []);
+
   const [accessUser, setAccesUser] = useState(false);
   const [accessSchool, setAccesSchool] = useState(false);
   function handleUser() {
