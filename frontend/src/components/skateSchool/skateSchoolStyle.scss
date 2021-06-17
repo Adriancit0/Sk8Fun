@@ -1,10 +1,7 @@
-.school-creator{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;   
-    justify-content: space-evenly;
-    height: 80vh;
-    background-color: rgb(153,153,153);
+.school-page__school-creator{
+    margin-top: 6rem;
+    height: 88vh;
+    font-weight: 700;
     .school-creator__info-catcher{
         display: flex;
         flex-direction: column;
