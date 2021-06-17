@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap');
 
 .header{
+    box-sizing: border-box;
+    width: 100%;
+    top: 0;
+    position: fixed;
     height: 4.5rem;
     display: flex;
     background-color: white;
@@ -12,7 +16,9 @@
     max-height: 82px;
     margin: auto;
     padding: 20px;
+    box-shadow: 0 1px 12px #c4c4c4;
     .header__title{
+        margin-top: 5rem;
         width: 30%;
         margin: 1rem;
         font-family: 'Covered By Your Grace', cursive;

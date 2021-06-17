@@ -6,11 +6,13 @@
 }
 
 .user-page__school-list{
+    width: 100vw;
     padding: 0%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 3rem;
 }
 
 .user-page__title{
@@ -22,7 +24,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: solid 2px black;
+   
 }
 
 .school-list__school-element + .school-list__school-element{
@@ -30,9 +32,11 @@
 }
 
 .school-element__image{
-    height: 10rem;
-    width: 12rem;
+    height: auto;
+    width: 80vw;
+    height: auto;
     margin: 1rem;
+    border-radius: 1rem;
 }
 
 .school-list__nav{
