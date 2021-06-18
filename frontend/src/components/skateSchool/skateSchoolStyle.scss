@@ -1,10 +1,7 @@
-.school-creator{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;   
-    justify-content: space-evenly;
-    height: 80vh;
-    background-color: rgb(153,153,153);
+.school-page__school-creator{
+    margin-top: 6rem;
+    height: 88vh;
+    font-weight: 700;
     .school-creator__info-catcher{
         display: flex;
         flex-direction: column;
@@ -21,4 +18,15 @@
         width: 5rem;
         border-radius: 1.25rem;
     }
+}
+
+.school-page__confirm-modal{
+    height: 70vh;
+    margin-top: 6rem;
+    margin-bottom: 1rem;
+    width: 80vw;
+    margin-left: 2rem;
+}
+button{
+    margin-top:1rem;
 }

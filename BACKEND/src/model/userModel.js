@@ -6,7 +6,7 @@ const userModel = Schema({
   password: String,
   image: String,
   phone: Number,
-  typeOfUser: String,
+  role: String,
   activityHistory: [String],
   interested: [String]
 });

@@ -12,7 +12,7 @@ require('./src/passport/jwt.strategy');
 require('./src/passport/local.strategy');
 
 const schoolRoutes = require('./src/routes/school.routes');
-const userModelRoutes = require('./src/routes/userModel.routes');
+// const userModelRoutes = require('./src/routes/userModel.routes');
 const authRoutes = require('./src/routes/auth.routes');
 const userLoginRoutes = require('./src/routes/user.routes');
 
@@ -31,11 +31,11 @@ server.use(
   // passport.authenticate('jwt', { session: false }),
   schoolRoutes
 );
-server.use(
-  '/funnySk8',
-  // passport.authenticate('jwt', { session: false }),
-  userModelRoutes
-);
+// server.use(
+//   '/funnySk8',
+//   // passport.authenticate('jwt', { session: false }),
+//   userModelRoutes
+// );
 server.use(
   '/user',
   passport.authenticate('jwt', { session: false }),
