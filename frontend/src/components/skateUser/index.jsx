@@ -33,8 +33,8 @@ function schoolList() {
       <input
         type="text"
         id="search"
-        data-testid="user-page__search"
-        placeholder="Filtra por dirección"
+        className="user-page__search"
+        placeholder="Filtra por dirección..."
         onChange={(event) => setSearchValue(event.target.value)}
       />
       <ul className="user-page__school-list">

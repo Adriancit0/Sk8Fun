@@ -6,6 +6,18 @@
     margin-top: 3rem;
     .user-page__title{
         margin-top: 2rem;
+        
+    }
+
+    .user-page__search{
+        min-width: 4rem;
+        font-weight: 700;
+        height: 2rem;
+        border: none;
+        border-radius: 1rem;
+        border: 2px solid  rgb(41,59,148);
+        color: rgb(41,59,148);
+        margin: 1rem;
     }
 
     .user-page__school-list{
@@ -15,7 +27,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 5rem;
+       
 
         .school-list__school-element{
             display: flex;
