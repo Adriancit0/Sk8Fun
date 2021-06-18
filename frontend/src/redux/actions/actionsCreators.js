@@ -1,7 +1,9 @@
 import axios from 'axios';
 import actionTypes from './actionsTypes';
 
-const url = ' http://localhost:4000/funnySk8/schools';
+const url = 'http://localhost:4000/funnySk8/schools';
+const urlLogin = 'http://localhost:4000/login';
+const urlUserData = 'http://localhost:4000/token';
 
 export function getAll() {
   return async (dispatch) => {
@@ -50,5 +52,43 @@ export function updateById(itemId, propierty) {
       type: actionTypes.UPDATE_ITEM,
       itemSelected: data
     });
+  };
+}
+
+export function logIn(loginUser) {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post(urlLogin, loginUser);
+      dispatch({
+        type: actionTypes.LOG_IN,
+        user: data
+      });
+    } catch (error) {
+      dispatch({
+        type: actionTypes.LOG_IN,
+        user: {}
+      });
+    }
+  };
+}
+
+export function getUserData(token) {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios(urlUserData, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      dispatch({
+        type: actionTypes.GET_USER_DATA,
+        user: data
+      });
+    } catch (error) {
+      dispatch({
+        type: actionTypes.GET_USER_DATA,
+        user: {}
+      });
+    }
   };
 }

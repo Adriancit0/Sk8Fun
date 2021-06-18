@@ -26,20 +26,18 @@ authRoutes.post(
         try {
           if (err || !user) {
             const error = new Error('An error occurred.');
-
             return next(error);
           }
-
           return req.login(
             user,
             { session: false },
             async (error) => {
               if (error) return next(error);
-
               const data = {
                 _id: user._id,
                 email: user.email,
-                role: user.role
+                name: user.name,
+                image: user.image
               };
               const token = jwt.sign(
                 { user: data },
@@ -50,9 +48,7 @@ authRoutes.post(
                 { user: data },
                 process.env.JWT_SECRET
               );
-
               refreshTokens.push(refreshToken);
-
               return res.json({
                 token,
                 refreshToken
@@ -66,36 +62,6 @@ authRoutes.post(
     )(req, res, next);
   }
 );
-
-authRoutes.post('/token', (req, res) => {
-  const { token } = req.body;
-
-  if (!token) {
-    return res.sendStatus(401);
-  }
-
-  if (!refreshTokens.includes(token)) {
-    return res.sendStatus(403);
-  }
-
-  return jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-    if (err) {
-      return res.sendStatus(403);
-    }
-
-    const data = { _id: user._id, email: user.email };
-
-    const accessToken = jwt.sign(
-      { user: data },
-      process.env.JWT_SECRET,
-      { expiresIn: '60m' }
-    );
-
-    return res.json({
-      accessToken
-    });
-  });
-});
 
 authRoutes.post('/logout', (req, res) => {
   const { token } = req.body;
