@@ -43,9 +43,11 @@ module.exports = {
     }
   },
   getUserData: async (req, res) => {
-    const { userId } = req.params;
+    const { userEmail } = req.headers.userdata;
+    console.log(userEmail);
     try {
-      const user = await User.findById(userId);
+      const user = await User.findById(userEmail);
+      console.log(`funciona${user}`);
       res.json(user);
     } catch (error) {
       res.status(500);

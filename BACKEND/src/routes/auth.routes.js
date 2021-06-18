@@ -36,7 +36,11 @@ authRoutes.post(
             async (error) => {
               if (error) return next(error);
 
-              const data = { _id: user._id, email: user.email };
+              const data = {
+                _id: user._id,
+                email: user.email,
+                role: user.role
+              };
               const token = jwt.sign(
                 { user: data },
                 process.env.JWT_SECRET,

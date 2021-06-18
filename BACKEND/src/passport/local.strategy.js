@@ -1,17 +1,15 @@
 const passport = require('passport');
 const localStrategy = require('passport-local');
+const strategyFields = require('../constants/strategy-fields');
 const User = require('../model/userModel');
 
 passport.use(
   'signup',
   new localStrategy.Strategy(
-    {
-      usernameField: 'email',
-      passwordField: 'password'
-    },
-    async (email, password, done) => {
+    strategyFields,
+    async (req, email, password, done) => {
       try {
-        const user = await User.create({ email, password });
+        const user = await User.create({ email, password, role: req.body.role });
         return done(null, user);
       } catch (error) {
         return done(error);

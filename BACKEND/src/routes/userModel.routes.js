@@ -6,14 +6,13 @@ function userRouter() {
 
   userRoutes
     .route('/users')
-    .get(userControllers.getAll)
+    .get(userControllers.getUserData)
     .post(userControllers.createUser);
 
   userRoutes
     .route('/users/:userId')
     .delete(userControllers.deleteUser)
-    .put(userControllers.updateUser)
-    .get(userControllers.getUserData);
+    .put(userControllers.updateUser);
 
   return userRoutes;
 }
