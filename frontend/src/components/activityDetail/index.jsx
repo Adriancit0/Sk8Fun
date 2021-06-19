@@ -6,6 +6,7 @@ import StandardButton from '../button';
 import './activityDetailStyle.scss';
 
 function activityDetail({ activity, index }) {
+  const [contador, setContador] = useState(0);
   const [imInterested, setImInterested] = useState(false);
   const [currentLike, setCurrentlike] = useState(activity.likes);
   const [currentPriceBook, setCurrentPriceBook] = useState(0);
@@ -17,20 +18,21 @@ function activityDetail({ activity, index }) {
 
   function handleImInterested() {
     setImInterested(!imInterested);
+    const newActivities = [...school?.activities];
+
     let { popularity } = school;
-    const activities = [...school.activities];
     if (!imInterested) {
       const newCurrentLike = currentLike + 1;
+      newActivities[index].likes = newCurrentLike;
       popularity += 1;
       setCurrentlike(newCurrentLike);
-      activities[index].likes = newCurrentLike;
     } else {
       const newCurrentLike = currentLike - 1;
+      newActivities[index].likes = newCurrentLike;
       popularity -= 1;
       setCurrentlike(newCurrentLike);
-      activities[index].likes = newCurrentLike;
     }
-    dispatch(updateById(schoolId, { activities, popularity }));
+    dispatch(updateById(schoolId, { activities: newActivities, popularity }));
   }
 
   function sumPrice() {
@@ -48,14 +50,20 @@ function activityDetail({ activity, index }) {
   }
 
   function Booking() {
-    const activities = [...school.activities];
-    activities[index].places = currentPlaces;
-    dispatch(updateById(schoolId, { activities }));
+    const newActivities = [...school?.activities];
+    newActivities[index].places = currentPlaces;
+    dispatch(updateById(schoolId, { activities: newActivities }));
+  }
+
+  function deleteActivity() {
+    const newActivities = [...school?.activities].splice(index, 1);
+    dispatch(updateById(schoolId, { activities: newActivities }));
+    setContador(contador + 1);
   }
 
   useEffect(() => {
     dispatch(getById(schoolId));
-  }, []);
+  }, [contador]);
 
   return (
     <li key={activity?._id} className="activities-list__activity-item">
@@ -111,6 +119,7 @@ function activityDetail({ activity, index }) {
             {' '}
             personas interesadas en esta oferta
           </p>
+          <StandardButton type="button" functionName={deleteActivity} content="Eliminar actividad" />
         </footer>
       </ul>
     </li>

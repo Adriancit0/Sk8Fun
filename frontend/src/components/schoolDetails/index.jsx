@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getById, deleteById } from '../../redux/actions/actionsCreators';
 import ActivityDetail from '../activityDetail';
 import StandardButton from '../button';
+import CreateActivity from '../createActivity';
+
 import './schoolDetailStyle.scss';
 
 function schoolDetail() {
@@ -13,9 +15,11 @@ function schoolDetail() {
   const dispatch = useDispatch();
   const school = useSelector((store) => store.itemSelected);
   const { activities } = school;
+
   useEffect(() => {
     dispatch(getById(schoolId));
   }, []);
+
   function handleDelete(id) {
     dispatch(deleteById(id));
     setIsDelete(true);
@@ -55,7 +59,7 @@ function schoolDetail() {
           <section className="school-card__description">
             {school?.info?.description}
           </section>
-          {activities?.length > 1 ? (
+          {activities?.length ? (
             <ul className="school-card__activities-list">
               {activities?.map((activity, index) => (
                 <ActivityDetail key={activity?._id} activity={activity} index={index} />
@@ -65,6 +69,7 @@ function schoolDetail() {
             <p>En estos momentos no tenemos actividades disponibles</p>
           )}
           <StandardButton type="button" className="school-card__delete-button" functionName={() => handleDelete(schoolId)} content="Delete School" />
+          <CreateActivity schoolId={schoolId} />
         </section>
       )}
     </section>
