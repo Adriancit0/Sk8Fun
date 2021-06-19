@@ -46,6 +46,7 @@ export function deleteById(itemId) {
 }
 
 export function updateById(itemId, propierty) {
+  console.log(`${url}/${itemId}`);
   return async (dispatch) => {
     const { data } = await axios.put(`${url}/${itemId}`, propierty);
     dispatch({
