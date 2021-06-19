@@ -2,7 +2,7 @@ import { React, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import InputSection from '../inputSection';
 import StandardButton from '../button';
-import { updateById } from '../../redux/actions/actionsCreators';
+import { updateById, getById } from '../../redux/actions/actionsCreators';
 
 function createActivity({ schoolId }) {
   const school = useSelector((store) => store.itemSelected);
@@ -32,17 +32,23 @@ function createActivity({ schoolId }) {
     activities = newActivities;
     dispatch(updateById(schoolId, { activities }));
   }
+  function refresh() {
+    dispatch(getById(schoolId));
+  }
 
   return (
-    <form className="school-card__activity-create" onSubmit={handleCreateActivity}>
-      <InputSection htmlFor="description" type="text" id="description" value={description} functionName={setDescription} content="Descripción de la actividad:" required />
-      <InputSection htmlFor="level" type="text" id="level" value={level} functionName={setLevel} content="Nivel al que está orientado:" />
-      <InputSection htmlFor="level" type="text" id="level" value={level} functionName={setSchedule} content="Horario de la actividad:" />
-      <InputSection htmlFor="price" type="text" id="price" value={price} functionName={setPrice} content="Precio en €:" />
-      <InputSection htmlFor="unityPrice" type="text" id="unityPrice" value={unityPrice} functionName={setUnityPrice} content="Unidad por pago:" />
-      <InputSection htmlFor="places" type="text" id="places" value={places} functionName={setPlaces} content="Número de plazas:" />
-      <StandardButton className="activity-create__submit" type="submit" content="Submit" />
-    </form>
+    <>
+      <form className="school-card__activity-create" onSubmit={handleCreateActivity}>
+        <InputSection htmlFor="description" type="text" id="description" value={description} functionName={setDescription} content="Descripción de la actividad:" required />
+        <InputSection htmlFor="level" type="text" id="level" value={level} functionName={setLevel} content="Nivel al que está orientado:" />
+        <InputSection htmlFor="level" type="text" id="level" value={level} functionName={setSchedule} content="Horario de la actividad:" />
+        <InputSection htmlFor="price" type="text" id="price" value={price} functionName={setPrice} content="Precio en €:" />
+        <InputSection htmlFor="unityPrice" type="text" id="unityPrice" value={unityPrice} functionName={setUnityPrice} content="Unidad por pago:" />
+        <InputSection htmlFor="places" type="text" id="places" value={places} functionName={setPlaces} content="Número de plazas:" />
+        <StandardButton className="activity-create__submit" type="submit" content="Submit" />
+      </form>
+      <StandardButton type="button" functionName={refresh} />
+    </>
   );
 }
 

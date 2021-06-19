@@ -59,7 +59,7 @@ function schoolDetail() {
           <section className="school-card__description">
             {school?.info?.description}
           </section>
-          {activities?.length > 1 ? (
+          {activities?.length ? (
             <ul className="school-card__activities-list">
               {activities?.map((activity, index) => (
                 <ActivityDetail key={activity?._id} activity={activity} index={index} />
