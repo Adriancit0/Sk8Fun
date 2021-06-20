@@ -8,7 +8,7 @@ const schoolModel = Schema({
     address: String,
     imageUrl: String,
     description: String,
-    adminUser_id: String
+    createdBy: String
   },
   plant: {
     skateBoards: Boolean,

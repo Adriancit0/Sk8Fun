@@ -33,6 +33,12 @@ function schoolList() {
     }
   }
 
+  function schoolAdmin(school) {
+    if (school?.createdBy === user?.user?._id) {
+      return school;
+    }
+  }
+
   return (
     <section className="user-page">
       <h1 className="user-page__title">SCHOOL LIST</h1>
@@ -44,20 +50,42 @@ function schoolList() {
         onChange={(event) => setSearchValue(event.target.value)}
       />
       <ul className="user-page__school-list">
-        {schools.filter(schoolFilter).map((school) => (
-          <li key={`element:${school?._id}`} className="school-list__school-element">
-            <h3>{school?.info?.name}</h3>
-            <img className="school-element__image" src={school?.info?.imageUrl} alt={`${school?.info?.name}Skatepark`} />
-            <section className="school-element__footer-card">
-              <FontAwesomeIcon className="footer-card__icon" icon={faHeart} />
-              {' '}
-              <p>{school?.popularity}</p>
-              <Link className="footer-card__nav" key={school?._id} to={`/school/${school?._id}`}>
-                Details
-              </Link>
-            </section>
-          </li>
-        ))}
+        {user?.user?.role !== 'school' && (
+          schools.filter(schoolFilter).map((school) => (
+            <li key={`element:${school?._id}`} className="school-list__school-element">
+              <h3>{school?.info?.name}</h3>
+              <img className="school-element__image" src={school?.info?.imageUrl} alt={`${school?.info?.name}Skatepark`} />
+              <section className="school-element__footer-card">
+                <FontAwesomeIcon className="footer-card__icon" icon={faHeart} />
+                {' '}
+                <p>{school?.popularity}</p>
+                <Link className="footer-card__nav" key={school?._id} to={`/school/${school?._id}`}>
+                  Details
+                </Link>
+              </section>
+            </li>
+          ))
+        )}
+        { user?.user?.role === 'school' && (
+          schools.filter(schoolAdmin).map((school) => (
+            <>
+              {console.log(user)}
+              {console.log(school)}
+              <li key={`elements:${school?._id}`} className="school-list__school-element">
+                <h3>{school?.info?.name}</h3>
+                <img className="school-element__image" src={school?.info?.imageUrl} alt={`${school?.info?.name}Skatepark`} />
+                <section className="school-element__footer-card">
+                  <FontAwesomeIcon className="footer-card__icon" icon={faHeart} />
+                  {' '}
+                  <p>{school?.popularity}</p>
+                  <Link className="footer-card__nav" key={school?._id} to={`/school/${school?._id}`}>
+                    Details
+                  </Link>
+                </section>
+              </li>
+            </>
+          ))
+        )}
       </ul>
     </section>
   );
