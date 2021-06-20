@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
-import { React, useState, useEffect } from 'react';
+import { React, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getById, updateById } from '../../redux/actions/actionsCreators';
+import { updateById } from '../../redux/actions/actionsCreators';
 import StandardButton from '../button';
 import './activityDetailStyle.scss';
 
@@ -13,7 +13,6 @@ function activityDetail({ activity, index }) {
   const [currentPlaces, setCurrentPLaces] = useState(activity.places);
   const dispatch = useDispatch();
   const school = useSelector((store) => store.itemSelected);
-  const schoolId = school._id;
   const unityPrice = activity?.price?.quantity;
 
   function handleImInterested() {
@@ -32,7 +31,7 @@ function activityDetail({ activity, index }) {
       popularity -= 1;
       setCurrentlike(newCurrentLike);
     }
-    dispatch(updateById(schoolId, { activities: newActivities, popularity }));
+    dispatch(updateById(school?._id, { activities: newActivities, popularity }));
   }
 
   function sumPrice() {
@@ -52,18 +51,14 @@ function activityDetail({ activity, index }) {
   function Booking() {
     const newActivities = [...school?.activities];
     newActivities[index].places = currentPlaces;
-    dispatch(updateById(schoolId, { activities: newActivities }));
+    dispatch(updateById(school?._id, { activities: newActivities }));
   }
 
   function deleteActivity() {
     const newActivities = [...school?.activities].splice(index, 1);
-    dispatch(updateById(schoolId, { activities: newActivities }));
+    dispatch(updateById(school?._id, { activities: newActivities }));
     setContador(contador + 1);
   }
-
-  useEffect(() => {
-    dispatch(getById(schoolId));
-  }, [contador]);
 
   return (
     <li key={activity?._id} className="activities-list__activity-item">

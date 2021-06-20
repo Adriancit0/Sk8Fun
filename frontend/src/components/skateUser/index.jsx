@@ -16,7 +16,7 @@ function schoolList() {
   const schools = useSelector((store) => store.schoolList);
   const [searchValue, setSearchValue] = useState('');
   useEffect(() => {
-    if (!schools.length) dispatch(getAll());
+    dispatch(getAll());
   }, []);
 
   function schoolFilter(school) {
