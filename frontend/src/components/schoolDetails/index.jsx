@@ -71,10 +71,10 @@ function schoolDetail() {
             ) : (
               <p>En estos momentos no tenemos actividades disponibles</p>
             )}
-            {user?.user?.role === 'school' && (
+            {user?.user?._id === school?.info?.createdBy && user?.user?.role === 'school' && (
               <>
-                <StandardButton type="button" className="school-card__delete-button" functionName={() => handleDelete(schoolId)} content="Delete School" />
                 <CreateActivity schoolId={schoolId} />
+                <StandardButton type="button" className="school-card__delete-button" functionName={() => handleDelete(schoolId)} content="Delete School" />
               </>
             )}
 

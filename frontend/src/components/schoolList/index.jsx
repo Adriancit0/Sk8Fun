@@ -70,8 +70,6 @@ function schoolList() {
         { user?.user?.role === 'school' && (
           schools.filter(schoolAdmin).map((school) => (
             <>
-              {console.log(user)}
-              {console.log(school)}
               <li key={`elements:${school?._id}`} className="school-list__school-element">
                 <h3>{school?.info?.name}</h3>
                 <img className="school-element__image" src={school?.info?.imageUrl} alt={`${school?.info?.name}Skatepark`} />

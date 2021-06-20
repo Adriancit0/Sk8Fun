@@ -11,6 +11,7 @@ function header() {
         FunnySk8
       </Link>
       <nav className="header__nav-bar">
+        <Link className="nav-bar__logout" to="/user">Escuelas</Link>
         {
         user.token ? (
           <Link className="nav-bar__logout" to="/logout">LogOut</Link>

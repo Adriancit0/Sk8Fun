@@ -13,6 +13,7 @@ function activityDetail({ activity, index }) {
   const [currentPlaces, setCurrentPLaces] = useState(activity.places);
   const dispatch = useDispatch();
   const school = useSelector((store) => store.itemSelected);
+  const user = useSelector((store) => store.user);
   const unityPrice = activity?.price?.quantity;
 
   function handleImInterested() {
@@ -88,33 +89,45 @@ function activityDetail({ activity, index }) {
           {currentPlaces}
         </li>
         <footer className="activities-item__footer">
-          <section className="footer__sum-sub-buttons">
-            <StandardButton type="button" functionName={sumPrice} content="+" />
-            <StandardButton type="button" functionName={substracPrice} content="-" />
-          </section>
-          <p>
-            Price:
-            {' '}
-            {currentPriceBook}
-            /
-            {activity?.price?.unity}
-          </p>
-          <section className="footer__book-like-buttons">
-            <StandardButton type="button" functionName={Booking} content=" Book " />
-            <button
-              className="book-like-buttons__like"
-              type="button"
-              onClick={handleImInterested}
-            >
-              {imInterested ? ' Im not interested ' : ' Im interested '}
-            </button>
-          </section>
+          {
+            user?.user?.role !== 'school' && (
+              <>
+                <section className="footer__sum-sub-buttons">
+                  <StandardButton type="button" functionName={sumPrice} content="+" />
+                  <StandardButton type="button" functionName={substracPrice} content="-" />
+                </section>
+                <p>
+                  Precio:
+                  {' '}
+                  {currentPriceBook}
+                  /
+                  {activity?.price?.unity}
+                </p>
+              </>
+            )
+          }
+          {
+            user?.user?.role !== 'school' && (
+              <section className="footer__book-like-buttons">
+                <StandardButton type="button" functionName={Booking} content=" Book " />
+                <button
+                  className="book-like-buttons__like"
+                  type="button"
+                  onClick={handleImInterested}
+                >
+                  {imInterested ? ' Im not interested ' : ' Im interested '}
+                </button>
+              </section>
+            )
+          }
           <p>
             {activity?.likes}
             {' '}
             personas interesadas en esta oferta
           </p>
-          <StandardButton type="button" functionName={deleteActivity} content="Eliminar actividad" />
+          {user?.user?._id === school.info.createdBy && user?.user?.role === 'school' && (
+            <StandardButton type="button" functionName={deleteActivity} content="Eliminar actividad" />
+          )}
         </footer>
       </ul>
     </li>
