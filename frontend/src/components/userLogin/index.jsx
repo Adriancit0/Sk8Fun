@@ -1,6 +1,4 @@
-/* eslint-disable no-debugger */
 import { React, useState } from 'react';
-// import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import InputSection from '../inputSection';
@@ -32,10 +30,10 @@ function loginPage() {
         <>
           {
            role === 'user' ? (
-             <Link to="/user">Accede a la lista</Link>
+             <Link className="login__confirm" to="/user">Accede a la lista</Link>
            )
              : (
-               <Link to="/school">Accede a tu escuela</Link>
+               <Link className="login__confirm" to="/school">Accede a tu escuela</Link>
              )
         }
 

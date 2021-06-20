@@ -1,12 +1,11 @@
 /* eslint-disable no-underscore-dangle */
-import { React, useState, useEffect } from 'react';
+import { React, useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteById, getById } from '../../redux/actions/actionsCreators';
 import ActivityDetail from '../activityDetail';
 import StandardButton from '../button';
 import CreateActivity from '../createActivity';
-
 import './schoolDetailStyle.scss';
 
 function schoolDetail() {
@@ -18,7 +17,7 @@ function schoolDetail() {
 
   useEffect(() => {
     dispatch(getById(schoolId));
-  }, []);
+  }, [isDelete]);
 
   function handleDelete(id) {
     dispatch(deleteById(id));
@@ -27,7 +26,6 @@ function schoolDetail() {
 
   return (
     school && (
-
       <section className="school-detail">
         {isDelete ? (
           <section className="school-detail__modal-comfirm">

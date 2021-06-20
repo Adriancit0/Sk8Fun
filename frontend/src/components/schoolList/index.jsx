@@ -1,7 +1,9 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable consistent-return */
 import './userPage.scss';
-import { React, useEffect, useState } from 'react';
+import {
+  React, useEffect, useState
+} from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,14 +11,18 @@ import {
   faHeart
 } from '@fortawesome/free-solid-svg-icons';
 
-import { getAll } from '../../redux/actions/actionsCreators';
+import { getAll, getUserData } from '../../redux/actions/actionsCreators';
 
 function schoolList() {
   const dispatch = useDispatch();
   const schools = useSelector((store) => store.schoolList);
+  const user = useSelector((store) => store.user);
   const [searchValue, setSearchValue] = useState('');
   useEffect(() => {
     dispatch(getAll());
+    if (user?.token) {
+      dispatch(getUserData(user?.token));
+    }
   }, []);
 
   function schoolFilter(school) {
