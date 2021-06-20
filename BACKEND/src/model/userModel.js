@@ -7,8 +7,8 @@ const userModel = Schema({
   image: String,
   phone: Number,
   role: String,
-  activityHistory: [String],
-  interested: [String]
+  activityHistory: [Object],
+  interested: [Object]
 });
 
 userModel.methods.isValidPassword = function isValidPassword(password) {
