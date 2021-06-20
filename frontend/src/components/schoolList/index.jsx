@@ -23,6 +23,7 @@ function schoolList() {
     if (user?.token) {
       dispatch(getUserData(user?.token));
     }
+    window.scrollTo(0, 0);
   }, []);
 
   function schoolFilter(school) {
