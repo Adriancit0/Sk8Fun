@@ -51,7 +51,7 @@ function schoolList() {
         onChange={(event) => setSearchValue(event.target.value)}
       />
       <ul className="user-page__school-list">
-        {user?.user?.role !== 'school' && (
+        {user?.user?.role === 'school' && (
           schools.filter(schoolFilter).map((school) => (
             <li key={`element:${school?._id}`} className="school-list__school-element">
               <h3>{school?.info?.name}</h3>
@@ -67,7 +67,7 @@ function schoolList() {
             </li>
           ))
         )}
-        { user?.user?.role === 'school' && (
+        { user?.user?.role !== 'school' && (
           schools.filter(schoolAdmin).map((school) => (
             <>
               <li key={`elements:${school?._id}`} className="school-list__school-element">
