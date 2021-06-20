@@ -9,7 +9,7 @@ function funnyHome() {
       <p className="home-page__subtitle">¡Elige la actividad dirigida en el horario que mejor se adapte a ti!</p>
       <section>
         <Link to="/login/user">Alumno</Link>
-        <Link to="/login/school">Escuela</Link>
+        <Link to="/login/user">Escuela</Link>
       </section>
     </section>
   );

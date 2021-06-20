@@ -1,5 +1,7 @@
 /* eslint-disable no-underscore-dangle */
-import { React, useEffect, useState } from 'react';
+import {
+  React, useEffect, useState
+} from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteById, getById } from '../../redux/actions/actionsCreators';
@@ -13,6 +15,7 @@ function schoolDetail() {
   const { schoolId } = useParams();
   const dispatch = useDispatch();
   const school = useSelector((store) => store.itemSelected);
+  const user = useSelector((store) => store.user);
   const { activities } = school;
 
   useEffect(() => {
@@ -68,8 +71,13 @@ function schoolDetail() {
             ) : (
               <p>En estos momentos no tenemos actividades disponibles</p>
             )}
-            <StandardButton type="button" className="school-card__delete-button" functionName={() => handleDelete(schoolId)} content="Delete School" />
-            <CreateActivity schoolId={schoolId} />
+            {user?.user?.role === 'school' && (
+              <>
+                <StandardButton type="button" className="school-card__delete-button" functionName={() => handleDelete(schoolId)} content="Delete School" />
+                <CreateActivity schoolId={schoolId} />
+              </>
+            )}
+
           </section>
         )}
       </section>

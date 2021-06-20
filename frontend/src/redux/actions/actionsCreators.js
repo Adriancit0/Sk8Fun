@@ -3,7 +3,7 @@ import actionTypes from './actionsTypes';
 
 const url = 'http://localhost:4000/funnySk8/schools';
 const urlLogin = 'http://localhost:4000/login';
-const urlUserData = 'http://localhost:4000/token';
+const urlUserData = 'http://localhost:4000/user/profile';
 
 export function getAll() {
   return async (dispatch) => {
