@@ -7,7 +7,10 @@ function inputSection({
   htmlFor, type, content, id, value, functionName
 }) {
   return (
-    <section className="input-section">
+    <section
+      data-testid="inputSection"
+      className="input-section"
+    >
       <label
         className="input-section__label"
         htmlFor={htmlFor}
@@ -16,6 +19,7 @@ function inputSection({
       </label>
       <input
         className="input-section__input"
+        data-testid="input-section__input"
         type={type}
         id={id}
         value={value}
