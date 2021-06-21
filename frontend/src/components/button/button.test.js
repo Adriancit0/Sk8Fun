@@ -13,9 +13,9 @@ describe('Given a Header component', () => {
             <Header />
           </MemoryRouter>
         );
-        const detailButton = screen.queryByTestId('standardButton');
-        fireEvent.click(detailButton);
-        expect(stuffButton).toBeInTheDocument();
+        const button = screen.queryByTestId('standardButton');
+        fireEvent.click(button);
+        expect(button).toBeInTheDocument();
       });
     });
   });
