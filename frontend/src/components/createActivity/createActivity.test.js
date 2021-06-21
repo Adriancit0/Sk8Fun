@@ -2,7 +2,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import CreateActivity from './index';
-import InputSection from '../inputSection';
 import { updateById } from '../../redux/actions/actionsCreators';
 import { render, screen, fireEvent } from '../../utils/utils';
 
@@ -21,16 +20,14 @@ describe('Given a skateUser', () => {
         }
       }
     );
-    const standardButton = screen.queryByTestId('standardButton');
-    fireEvent.click(standardButton);
+    const submitButton = screen.queryByTestId('submit-button');
+    fireEvent.click(submitButton);
   });
   test('Should render section ', () => {
     const handleCreateActivity = jest.fn();
     render(
       <MemoryRouter>
-        <CreateActivity>
-          <InputSection functionName={handleCreateActivity} />
-        </CreateActivity>
+        <CreateActivity />
       </MemoryRouter>
     );
     expect(handleCreateActivity).toHaveBeenCalled();

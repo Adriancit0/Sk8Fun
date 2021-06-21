@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import Header from './index';
+import Button from './index';
 import { render, screen, fireEvent } from '../../utils/utils';
 
 describe('Given a Header component', () => {
@@ -10,7 +10,7 @@ describe('Given a Header component', () => {
       test('Should render', () => {
         render(
           <MemoryRouter>
-            <Header />
+            <Button />
           </MemoryRouter>
         );
         const button = screen.queryByTestId('standardButton');
