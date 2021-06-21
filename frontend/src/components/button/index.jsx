@@ -3,9 +3,11 @@
 import React from 'react';
 import './buttonStyle.scss';
 
-function standardButton({ type, content, functionName }) {
+function standardButton({
+  type, content, functionName, testid
+}) {
   return (
-    <button type={type} className="standard-button" onClick={functionName}>{content}</button>
+    <button type={type} className="standard-button" onClick={functionName} data-testid={testid}>{content}</button>
   );
 }
 

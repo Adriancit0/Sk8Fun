@@ -4,10 +4,12 @@ import React from 'react';
 import './inputStyle.scss';
 
 function inputSection({
-  htmlFor, type, content, id, value, functionName
+  htmlFor, type, content, id, value, functionName, testid, className
 }) {
   return (
-    <section className="input-section">
+    <section
+      className="input-section"
+    >
       <label
         className="input-section__label"
         htmlFor={htmlFor}
@@ -15,7 +17,8 @@ function inputSection({
         {content}
       </label>
       <input
-        className="input-section__input"
+        className={className}
+        data-testid={testid}
         type={type}
         id={id}
         value={value}

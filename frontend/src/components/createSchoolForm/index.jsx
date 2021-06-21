@@ -35,7 +35,7 @@ function skateSchool() {
   return (
     <section className="school-page">
       {!isCreated ? (
-        <form className="school-page__school-creator" onSubmit={handleNewSchoolValues}>
+        <form data-testid="school-form" className="school-page__school-creator" onSubmit={handleNewSchoolValues}>
           <InputSection htmlFor="name" type="text" id="name" value={name} functionName={setName} content="Name:" />
           <InputSection htmlFor="phone" type="text" id="phone" value={phone} functionName={setPhone} content="Phone:" />
           <InputSection htmlFor="email" type="text" id="email" value={email} functionName={setEmail} content="Email:" />
@@ -45,7 +45,7 @@ function skateSchool() {
           <StandardButton className="school-creator__submit" type="submit" content="Submit" />
         </form>
       ) : (
-        <section className="school-page__confirm-modal">
+        <section data-testid="section" className="school-page__confirm-modal">
           <p>Bienvenido a FunnSk8, acabas de registrar una escuela!!!</p>
           <Link to={`/school/${school?._id}`}>
             <StandardButton className="confirm-modal__link" type="button" content="Go to Details" />

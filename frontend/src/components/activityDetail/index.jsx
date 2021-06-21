@@ -6,7 +6,6 @@ import StandardButton from '../button';
 import './activityDetailStyle.scss';
 
 function activityDetail({ activity, index }) {
-  const [contador, setContador] = useState(0);
   const [imInterested, setImInterested] = useState(false);
   const [currentLike, setCurrentlike] = useState(activity.likes);
   const [currentPriceBook, setCurrentPriceBook] = useState(0);
@@ -58,7 +57,6 @@ function activityDetail({ activity, index }) {
   function deleteActivity() {
     const newActivities = [...school?.activities].splice(index, 1);
     dispatch(updateById(school?._id, { activities: newActivities }));
-    setContador(contador + 1);
   }
 
   return (
@@ -93,8 +91,8 @@ function activityDetail({ activity, index }) {
             user?.user?.role !== 'school' && (
               <>
                 <section className="footer__sum-sub-buttons">
-                  <StandardButton type="button" functionName={sumPrice} content="+" />
-                  <StandardButton type="button" functionName={substracPrice} content="-" />
+                  <StandardButton testid="sum-button" type="button" functionName={sumPrice} content="+" />
+                  <StandardButton testid="subs-button" type="button" functionName={substracPrice} content="-" />
                 </section>
                 <p>
                   Precio:
@@ -109,8 +107,9 @@ function activityDetail({ activity, index }) {
           {
             user?.user?.role !== 'school' && (
               <section className="footer__book-like-buttons">
-                <StandardButton type="button" functionName={Booking} content=" Book " />
+                <StandardButton testid="booking-button" type="button" functionName={Booking} content=" Book " />
                 <button
+                  data-testid="interested-button"
                   className="book-like-buttons__like"
                   type="button"
                   onClick={handleImInterested}
@@ -125,8 +124,8 @@ function activityDetail({ activity, index }) {
             {' '}
             personas interesadas en esta oferta
           </p>
-          {user?.user?._id === school.info.createdBy && user?.user?.role === 'school' && (
-            <StandardButton type="button" functionName={deleteActivity} content="Eliminar actividad" />
+          {user?.user?._id === school?.info?.createdBy && user?.user?.role === 'school' && (
+            <StandardButton testid="delete-activity-button" type="button" functionName={deleteActivity} content="Eliminar actividad" />
           )}
         </footer>
       </ul>

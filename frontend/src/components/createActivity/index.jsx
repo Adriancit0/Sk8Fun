@@ -46,9 +46,9 @@ function createActivity({ schoolId }) {
         <InputSection htmlFor="price" type="text" id="price" value={price} functionName={setPrice} content="Precio en €:" />
         <InputSection htmlFor="unityPrice" type="text" id="unityPrice" value={unityPrice} functionName={setUnityPrice} content="Unidad por pago:" />
         <InputSection htmlFor="places" type="text" id="places" value={places} functionName={setPlaces} content="Número de plazas:" />
-        <StandardButton className="activity-create__submit" type="submit" content="Crear" />
+        <StandardButton testid="submit-button" className="activity-create__submit" type="submit" content="Crear" />
       </form>
-      <StandardButton type="button" functionName={refresh} content="Recargar" />
+      <StandardButton testid="refresh-button" type="button" functionName={refresh} content="Recargar" />
     </>
   );
 }
