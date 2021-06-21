@@ -24,13 +24,13 @@ function loginPage() {
         <form className="login__form" onSubmit={loginUser}>
           <InputSection htmlFor="email" type="text" id="email" value={email} functionName={setEmail} content="Email" />
           <InputSection htmlFor="password" type="password" id="password" value={password} functionName={setPassword} content="Password" />
-          <StandardButton type="submit" content="Login" />
+          <StandardButton data-testid="login-button" type="submit" content="Login" />
         </form>
       ) : (
         <>
           {
            role === 'user' ? (
-             <Link className="login__confirm" to="/user">Accede a la lista</Link>
+             <Link data-testid="login-confirm" className="login__confirm" to="/user">Accede a la lista</Link>
            )
              : (
                <Link className="login__confirm" to="/school">Accede a tu escuela</Link>
