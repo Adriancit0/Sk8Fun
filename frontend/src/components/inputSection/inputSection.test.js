@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import Header from './index';
+import InputSection from './index';
 import { render, screen, fireEvent } from '../../utils/utils';
 
 describe('Given a Header component', () => {
@@ -10,13 +10,18 @@ describe('Given a Header component', () => {
       test('Should render', () => {
         render(
           <MemoryRouter>
-            <Header />
+            <InputSection
+              className="input-section__input"
+              type="text"
+              id="id"
+              value="newValue"
+              functionName={jest.fn()}
+              testid="input"
+            />
           </MemoryRouter>
         );
-        const inputSection = screen.queryByTestId('inputSection');
-        const input = screen.queryByTestId('input-section__input');
-        fireEvent.change(input, { target: { value: { value } } });
-        expect(inputSection).toBeInTheDocument();
+        const input = screen.queryByTestId('input');
+        fireEvent.change(input, { target: { value: 'newValue' } });
       });
     });
   });

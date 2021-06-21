@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import InputSection from '../inputSection';
 import StandardButton from '../button';
-import { signUp, logIn } from '../../redux/actions/actionsCreators';
+import { signUp } from '../../redux/actions/actionsCreators';
 
 function signUpUser() {
   const dispatch = useDispatch();
@@ -34,10 +34,6 @@ function signUpUser() {
       setIsCreated(true));
   }
 
-  function logNewUser() {
-    dispatch(logIn({ email, password }));
-  }
-
   return (
     <section className="school-page">
       {!isCreated ? (
@@ -63,7 +59,7 @@ function signUpUser() {
         <section className="school-page__confirm-modal">
           <p>Bienvenido a FunnSk8, ya eres !!!</p>
           <Link to={`/school/${school?._id}`}>
-            <StandardButton onClick={logNewUser} className="confirm-modal__link" type="button" content="Go to Details" />
+            <StandardButton className="confirm-modal__link" type="button" content="Go to Details" />
           </Link>
         </section>
       )}
