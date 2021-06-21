@@ -18,25 +18,27 @@
     padding: 20px;
     box-shadow: 0 1px 12px #c4c4c4;
     .header__title{
+        text-decoration: none;
         margin-top: 5rem;
         width: 30%;
         margin: 1rem;
         font-family: 'Covered By Your Grace', cursive;
         font-size: 30px;
+        font-weight: 800;
     }
     .header__nav-bar{
         
         display: flex;
         justify-content: space-evenly;
         width: 70%;
-        .nav-bar__home{
+        .nav-bar__signup{
             font-weight: 700;
             text-decoration: none;
             display: flex;
             font-size: 1rem;
             
         }
-        .nav-bar__school-list{
+        .nav-bar__logout{
             font-weight: 700;
             text-decoration: none;
             display: flex;

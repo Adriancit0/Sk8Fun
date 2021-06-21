@@ -31,7 +31,7 @@ function skateSchool() {
     dispatch(createItem(newSchool),
       setIsCreated(true));
   }
-  const itemSelected = useSelector((store) => store.itemSelected);
+  const school = useSelector((store) => store.itemSelected);
   return (
     <section className="school-page">
       {!isCreated ? (
@@ -47,7 +47,7 @@ function skateSchool() {
       ) : (
         <section className="school-page__confirm-modal">
           <p>Bienvenido a FunnSk8, acabas de registrar una escuela!!!</p>
-          <Link to={`/school/${itemSelected?._id}`}>
+          <Link to={`/school/${school?._id}`}>
             <StandardButton className="confirm-modal__link" type="button" content="Go to Details" />
           </Link>
         </section>

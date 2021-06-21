@@ -3,7 +3,8 @@ import actionTypes from './actionsTypes';
 
 const url = 'http://localhost:4000/funnySk8/schools';
 const urlLogin = 'http://localhost:4000/login';
-const urlUserData = 'http://localhost:4000/token';
+const urlUserData = 'http://localhost:4000/user/profile';
+const urlSignUp = 'http://localhost:4000/signup';
 
 export function getAll() {
   return async (dispatch) => {
@@ -87,6 +88,23 @@ export function getUserData(token) {
     } catch (error) {
       dispatch({
         type: actionTypes.GET_USER_DATA,
+        user: {}
+      });
+    }
+  };
+}
+
+export function signUp(newUser) {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post(urlSignUp, newUser);
+      dispatch({
+        type: actionTypes.SIGN_UP,
+        user: data
+      });
+    } catch (error) {
+      dispatch({
+        type: actionTypes.SIGN_UP,
         user: {}
       });
     }
