@@ -7,8 +7,8 @@ import { render, screen, fireEvent } from '../../utils/utils';
 
 jest.mock('../../redux/actions/actionsCreators');
 
-describe('Given a skateUser', () => {
-  test('Should render SchoolList', () => {
+describe('Given a CreateActivity', () => {
+  test('Should render', () => {
     updateById.mockReturnValueOnce({ type: '' });
     render(
       <MemoryRouter>
@@ -16,20 +16,15 @@ describe('Given a skateUser', () => {
       </MemoryRouter>,
       {
         initialState: {
-          isCreated: false
+          itemSelected: {
+            activities: []
+          }
         }
       }
     );
     const submitButton = screen.queryByTestId('submit-button');
     fireEvent.click(submitButton);
-  });
-  test('Should render section ', () => {
-    const handleCreateActivity = jest.fn();
-    render(
-      <MemoryRouter>
-        <CreateActivity />
-      </MemoryRouter>
-    );
-    expect(handleCreateActivity).toHaveBeenCalled();
+    const refreshButton = screen.queryByTestId('refresh-button');
+    fireEvent.click(refreshButton);
   });
 });
