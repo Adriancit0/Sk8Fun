@@ -5,7 +5,7 @@ import './buttonStyle.scss';
 
 function standardButton({ type, content, functionName }) {
   return (
-    <button type={type} className="standard-button" onClick={functionName}>{content}</button>
+    <button type={type} data-testid="standardButton" className="standard-button" onClick={functionName}>{content}</button>
   );
 }
 

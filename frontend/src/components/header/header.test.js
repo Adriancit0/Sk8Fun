@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-import { MemoryRouter, Link } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import Header from './index';
 import { render, screen } from '../../utils/utils';
 
@@ -25,14 +25,12 @@ describe('Given a Header component', () => {
       test('Should render', () => {
         render(
           <MemoryRouter>
-            <Header><Link to="/logout" /></Header>
+            <Header />
           </MemoryRouter>,
           {
             initialState: {
               user: {
-                user: {
-                  token: ''
-                }
+                token: 'token'
               }
             }
           }
