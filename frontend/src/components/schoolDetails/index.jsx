@@ -74,7 +74,7 @@ function schoolDetail() {
             {user?.user?._id === school?.info?.createdBy && user?.user?.role === 'school' && (
               <>
                 <CreateActivity schoolId={schoolId} />
-                <StandardButton type="button" className="school-card__delete-button" functionName={() => handleDelete(schoolId)} content="Delete School" />
+                <StandardButton testid="detail-submit-button" type="button" className="school-card__delete-button" functionName={() => handleDelete(schoolId)} content="Delete School" />
               </>
             )}
 
