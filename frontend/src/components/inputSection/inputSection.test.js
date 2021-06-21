@@ -6,7 +6,7 @@ import { render, screen, fireEvent } from '../../utils/utils';
 
 describe('Given a Header component', () => {
   describe('When is invoked', () => {
-    describe('And dont have user login', () => {
+    describe('And dont ', () => {
       test('Should render', () => {
         render(
           <MemoryRouter>
@@ -14,13 +14,13 @@ describe('Given a Header component', () => {
               className="input-section__input"
               type="text"
               id="id"
-              value="newValue"
+              value="value"
               functionName={jest.fn()}
-              testid="input"
+              testid="form-input"
             />
           </MemoryRouter>
         );
-        const input = screen.queryByTestId('input');
+        const input = screen.queryByTestId('form-input');
         fireEvent.change(input, { target: { value: 'newValue' } });
       });
     });

@@ -8,7 +8,6 @@ function inputSection({
 }) {
   return (
     <section
-      data-testid={testid}
       className="input-section"
     >
       <label
@@ -19,7 +18,7 @@ function inputSection({
       </label>
       <input
         className={className}
-        testid={testid}
+        data-testid={testid}
         type={type}
         id={id}
         value={value}
