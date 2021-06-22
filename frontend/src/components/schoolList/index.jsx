@@ -32,6 +32,7 @@ function schoolList() {
     } if (school.info.address.toLowerCase().includes(searchValue.toLowerCase())) {
       return school;
     }
+    return school;
   }
 
   function schoolAdmin(school) {
