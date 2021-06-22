@@ -20,7 +20,7 @@ function schoolList() {
   const [searchValue, setSearchValue] = useState('');
   useEffect(() => {
     dispatch(getAll());
-    if (user?.token) {
+    if (user?.token && !user?.user?.email) {
       dispatch(getUserData(user?.token));
     }
     window.scrollTo(0, 0);
@@ -29,9 +29,11 @@ function schoolList() {
   function schoolFilter(school) {
     if (searchValue === '') {
       return school;
-    } if (school.info.address.toLowerCase().includes(searchValue.toLowerCase())) {
+    }
+    if (school.info.address.toLowerCase().includes(searchValue.toLowerCase())) {
       return school;
     }
+    return school;
   }
 
   function schoolAdmin(school) {
@@ -46,6 +48,7 @@ function schoolList() {
       <input
         type="text"
         id="search"
+        data-testid="search-input"
         className="user-page__search"
         placeholder="Filtra por dirección..."
         onChange={(event) => setSearchValue(event.target.value)}

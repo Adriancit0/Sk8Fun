@@ -14,37 +14,56 @@
     justify-content: space-evenly;
     max-width: 1400px;
     max-height: 82px;
-    margin: auto;
     padding: 20px;
     box-shadow: 0 1px 12px #c4c4c4;
     .header__title{
         text-decoration: none;
-        margin-top: 5rem;
-        width: 30%;
+        width: 25%;
         margin: 1rem;
+        margin-left: -0.1rem ;
         font-family: 'Covered By Your Grace', cursive;
         font-size: 30px;
         font-weight: 800;
     }
-    .header__nav-bar{
-        
+    .header__nav-bar{     
         display: flex;
         justify-content: space-evenly;
-        width: 70%;
+        width: 75%;
+        align-items: center;
+        .nav-bar__escuelas{
+            text-decoration: none;
+            font-weight: 700;
+            margin-left: 4rem
+        }
         .nav-bar__signup{
+            color: #ff6077;
+            border: 2px solid #ff6077;
             font-weight: 700;
             text-decoration: none;
             display: flex;
-            font-size: 1rem;
-            
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            margin-left: 1rem;
+            border-radius: 2rem;
+            height: 2rem;
+            align-self: center;
+            width: 4.5rem;
         }
         .nav-bar__logout{
+            color: #ff6077;
+            border: 2px solid #ff6077;
             font-weight: 700;
             text-decoration: none;
             display: flex;
-            font-size: 1rem;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            margin-left: 1rem;
+            border-radius: 2rem;
+            height: 2rem;
+            align-self: center;
+            width: 4.5rem;
         }
-
     }
-    
 }

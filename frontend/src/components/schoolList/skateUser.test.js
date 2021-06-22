@@ -2,14 +2,14 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import List from './index';
-import { getAll } from '../../redux/actions/actionsCreators';
-import { render, screen } from '../../utils/utils';
-import actionsTypes from '../../redux/actions/actionsTypes';
+import { getAll, getUserData } from '../../redux/actions/actionsCreators';
+import { render, screen, fireEvent } from '../../utils/utils';
 
+global.scrollTo = jest.fn();
 jest.mock('../../redux/actions/actionsCreators');
 describe('Given a skateUser', () => {
   test('Should render SchoolList', () => {
-    getAll.mockReturnValueOnce({ type: actionsTypes.GET_ALL });
+    getAll.mockReturnValueOnce({ type: '' });
     render(
       <MemoryRouter>
         <List />
@@ -24,17 +24,71 @@ describe('Given a skateUser', () => {
   });
   test('Should call getAll', () => {
     getAll.mockReturnValueOnce({ type: '' });
+    getUserData.mockReturnValueOnce({ type: '' });
     render(
       <MemoryRouter>
         <List />
       </MemoryRouter>,
       {
         initialState: {
-          schoolList: []
+          user: {
+            token: 'token'
+          }
+        }
+      }
+
+    );
+    expect(getUserData).toHaveBeenCalled();
+  });
+  test('Should call getAll', () => {
+    getAll.mockReturnValueOnce({ type: '' });
+    getUserData.mockReturnValueOnce({ type: '' });
+    render(
+      <MemoryRouter>
+        <List />
+      </MemoryRouter>,
+      {
+        initialState: {
+          user: {
+            user:
+            { token: 'token' },
+            role: 'school'
+          }
         }
       }
 
     );
     expect(getAll).toHaveBeenCalled();
+  });
+  test('Should call getAll', () => {
+    getAll.mockReturnValueOnce({ type: '' });
+    getUserData.mockReturnValueOnce({ type: '' });
+    render(
+      <MemoryRouter>
+        <List />
+        <input
+          data-id="search-input"
+          onChange={jest.fn(
+            { value: 'value' }
+          )}
+        />
+      </MemoryRouter>,
+      {
+        initialState: {
+          schoolList: [
+            {
+              info: { name: 'name' }
+            }
+          ],
+          user: {
+            user:
+            { token: 'token' },
+            role: 'school'
+          }
+        }
+      }
+    );
+    const searchInput = screen.queryByTestId('search-input');
+    fireEvent.change(searchInput, { target: { value: 'newValue' } });
   });
 });
