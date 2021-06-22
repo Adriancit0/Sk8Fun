@@ -20,7 +20,7 @@ function schoolList() {
   const [searchValue, setSearchValue] = useState('');
   useEffect(() => {
     dispatch(getAll());
-    if (user?.token) {
+    if (user?.token && !user?.user?.email) {
       dispatch(getUserData(user?.token));
     }
     window.scrollTo(0, 0);

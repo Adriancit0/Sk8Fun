@@ -2,14 +2,13 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import List from './index';
-import { getAll } from '../../redux/actions/actionsCreators';
+import { getAll, getUserData } from '../../redux/actions/actionsCreators';
 import { render, screen } from '../../utils/utils';
-import actionsTypes from '../../redux/actions/actionsTypes';
 
 jest.mock('../../redux/actions/actionsCreators');
 describe('Given a skateUser', () => {
   test('Should render SchoolList', () => {
-    getAll.mockReturnValueOnce({ type: actionsTypes.GET_ALL });
+    getAll.mockReturnValueOnce({ type: '' });
     render(
       <MemoryRouter>
         <List />
@@ -24,13 +23,37 @@ describe('Given a skateUser', () => {
   });
   test('Should call getAll', () => {
     getAll.mockReturnValueOnce({ type: '' });
+    getUserData.mockReturnValueOnce({ type: '' });
     render(
       <MemoryRouter>
         <List />
       </MemoryRouter>,
       {
         initialState: {
-          schoolList: []
+          user: {
+            user:
+            { token: 'token' },
+            role: 'school'
+          }
+        }
+      }
+
+    );
+    expect(getUserData).toHaveBeenCalled();
+  });
+  test('Should call getAll', () => {
+    getAll.mockReturnValueOnce({ type: '' });
+    getUserData.mockReturnValueOnce({ type: '' });
+    render(
+      <MemoryRouter>
+        <List />
+      </MemoryRouter>,
+      {
+        initialState: {
+          user: {
+            user:
+            { token: 'token' }
+          }
         }
       }
 
