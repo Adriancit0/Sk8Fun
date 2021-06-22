@@ -29,7 +29,8 @@ function schoolList() {
   function schoolFilter(school) {
     if (searchValue === '') {
       return school;
-    } if (school.info.address.toLowerCase().includes(searchValue.toLowerCase())) {
+    }
+    if (school.info.address.toLowerCase().includes(searchValue.toLowerCase())) {
       return school;
     }
     return school;
