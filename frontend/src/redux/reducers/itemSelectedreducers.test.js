@@ -35,4 +35,15 @@ describe('Given a itemSelectedReducer', () => {
       expect(result).toEqual(action.trip);
     });
   });
+  describe('When action.type equals actionTypes.UPDATE_ITEM ', () => {
+    test('return action.trip', () => {
+      const trip = {};
+      const action = {
+        type: actionsTypes.UPDATE_ITEM,
+        trip
+      };
+      const result = itemSelectedReducer(trip, action);
+      expect(result).toEqual(action.trip);
+    });
+  });
 });

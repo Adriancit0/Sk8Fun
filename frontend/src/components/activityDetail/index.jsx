@@ -21,11 +21,11 @@ function activityDetail({ activity, index }) {
     setImInterested(!imInterested);
     let newActivities = [...school?.activities];
     let actualCurrentPopularity;
+    setCurrentPopulatity(actualCurrentPopularity);
     if (!imInterested) {
       actualCurrentPopularity = currentPopularity + 1;
       const newCurrentLike = currentLike + 1;
       newActivities[index].likes = newCurrentLike;
-      setCurrentPopulatity(actualCurrentPopularity);
       setCurrentlike(newCurrentLike);
     } else {
       actualCurrentPopularity = currentPopularity - 1;
