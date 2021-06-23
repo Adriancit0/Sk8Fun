@@ -1,9 +1,11 @@
 import actionTypes from '../actions/actionsTypes';
 
 function schoolListReducer(schoolList = [], action) {
-  if (actionTypes.GET_ALL) {
-    return action.schoolList;
+  switch (action.type) {
+    case actionTypes.GET_ALL:
+      return action.schoolList;
+    default:
+      return schoolList;
   }
-  return schoolList;
 }
 export default schoolListReducer;

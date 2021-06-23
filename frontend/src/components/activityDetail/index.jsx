@@ -1,37 +1,45 @@
+/* eslint-disable no-debugger */
 /* eslint-disable no-underscore-dangle */
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateById } from '../../redux/actions/actionsCreators';
+import { updateById, getById } from '../../redux/actions/actionsCreators';
 import StandardButton from '../button';
 import './activityDetailStyle.scss';
 
 function activityDetail({ activity, index }) {
-  const [imInterested, setImInterested] = useState(false);
-  const [currentLike, setCurrentlike] = useState(activity.likes);
-  const [currentPriceBook, setCurrentPriceBook] = useState(0);
-  const [currentPlaces, setCurrentPLaces] = useState(activity.places);
   const dispatch = useDispatch();
   const school = useSelector((store) => store.itemSelected);
   const user = useSelector((store) => store.user);
+  const [imInterested, setImInterested] = useState(false);
+  const [currentPriceBook, setCurrentPriceBook] = useState(0);
+  const [currentPlaces, setCurrentPLaces] = useState(activity.places);
   const unityPrice = activity?.price?.quantity;
+  const [currentPopularity, setCurrentPopulatity] = useState(school?.popularity);
+  const [currentLike, setCurrentlike] = useState(school?.activities[index]?.likes);
 
   function handleImInterested() {
     setImInterested(!imInterested);
-    const newActivities = [...school?.activities];
-
-    let { popularity } = school;
+    let newActivities = [...school?.activities];
+    let actualCurrentPopularity;
     if (!imInterested) {
+      actualCurrentPopularity = currentPopularity + 1;
       const newCurrentLike = currentLike + 1;
       newActivities[index].likes = newCurrentLike;
-      popularity += 1;
+      setCurrentPopulatity(actualCurrentPopularity);
       setCurrentlike(newCurrentLike);
     } else {
+      actualCurrentPopularity = currentPopularity - 1;
       const newCurrentLike = currentLike - 1;
       newActivities[index].likes = newCurrentLike;
-      popularity -= 1;
+      newActivities = [...newActivities];
+      setCurrentPopulatity(actualCurrentPopularity);
       setCurrentlike(newCurrentLike);
     }
-    dispatch(updateById(school?._id, { activities: newActivities, popularity }));
+    dispatch(updateById(school?._id, { popularity: actualCurrentPopularity }));
+    dispatch(updateById(school?._id,
+      {
+        activities: newActivities
+      }));
   }
 
   function sumPrice() {
@@ -58,7 +66,9 @@ function activityDetail({ activity, index }) {
     const newActivities = [...school?.activities].splice(index, 1);
     dispatch(updateById(school?._id, { activities: newActivities }));
   }
-
+  useEffect(() => {
+    dispatch(getById(school?._id));
+  }, []);
   return (
     <li key={activity?._id} className="activities-list__activity-item">
       <ul className="activity-item__info-list">

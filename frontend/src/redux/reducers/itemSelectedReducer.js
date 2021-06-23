@@ -9,7 +9,7 @@ function itemSelectedReducer(itemSelected = {}, action) {
     case actionTypes.DELETE_ITEM:
       return itemSelected;
     case actionTypes.UPDATE_ITEM:
-      return itemSelected;
+      return action.itemSelected;
     default:
       return itemSelected;
   }

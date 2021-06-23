@@ -24,4 +24,15 @@ describe('Given a userReducer', () => {
       expect(result).toEqual(action.user);
     });
   });
+  describe('When action.type equals actionTypes.SIGN_UP ', () => {
+    test('return action.user', () => {
+      const user = {};
+      const action = {
+        type: actionsTypes.SIGN_UP,
+        user
+      };
+      const result = userReducer(user, action);
+      expect(result).toEqual(action.user);
+    });
+  });
 });
