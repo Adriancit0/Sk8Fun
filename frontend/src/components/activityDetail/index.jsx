@@ -89,6 +89,8 @@ function activityDetail({ activity, index }) {
           Precio:
           {' '}
           {activity?.price?.quantity}
+          € /
+
           {activity?.price?.unity}
         </li>
         <li>
@@ -108,7 +110,10 @@ function activityDetail({ activity, index }) {
                   Precio:
                   {' '}
                   {currentPriceBook}
+                  €
+
                   /
+
                   {activity?.price?.unity}
                 </p>
               </>
