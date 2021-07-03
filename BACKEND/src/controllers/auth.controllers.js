@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken');
 const handleError = require('../utils/handle-error');
 
 let refreshTokens = [];
-
 function authController() {
   async function singUp(req, res) {
     try {
@@ -16,7 +15,6 @@ function authController() {
       handleError.call(res, error);
     }
   }
-
   async function logIn(req, res, next) {
     passport.authenticate(
       'login',
@@ -26,13 +24,11 @@ function authController() {
             const error = new Error('An error occurred.');
             return next(error);
           }
-
           return req.login(
             user,
             { session: false },
             async (error) => {
               if (error) return next(error);
-
               const data = {
                 _id: user._id,
                 email: user.email,
@@ -49,9 +45,7 @@ function authController() {
                 { user: data },
                 process.env.JWT_SECRET
               );
-
               refreshTokens.push(refreshToken);
-
               return res.json({
                 token,
                 refreshToken
@@ -64,45 +58,34 @@ function authController() {
       }
     )(req, res, next);
   }
-
   async function getToken(req, res) {
     const { token } = req.body;
-
     if (!token) {
       return res.sendStatus(401);
     }
-
     if (!refreshTokens.includes(token)) {
       return res.sendStatus(403);
     }
-
     return jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
       if (err) {
         return res.sendStatus(403);
       }
-
       const data = { _id: user._id, email: user.email };
-
       const accessToken = jwt.sign(
         { user: data },
         process.env.JWT_SECRET,
         { expiresIn: '60m' }
       );
-
       return res.json({
         accessToken
       });
     });
   }
-
   async function logOut(req, res) {
     const { token } = req.body;
-
     refreshTokens = refreshTokens.filter((current) => current !== token);
-
     res.send('Logout successful');
   }
-
   return {
     singUp,
     logIn,
@@ -110,5 +93,4 @@ function authController() {
     logOut
   };
 }
-
 module.exports = authController;
