@@ -44,7 +44,7 @@ function schoolList() {
 
   return (
     <section className="user-page">
-      <h1 className="user-page__title">SCHOOL LIST</h1>
+      <h1 className="user-page__title"> </h1>
       <input
         type="text"
         id="search"
@@ -64,7 +64,7 @@ function schoolList() {
                 {' '}
                 <p>{school?.popularity}</p>
                 <Link className="footer-card__nav" key={school?._id} to={`/school/${school?._id}`}>
-                  Details
+                  Detalles
                 </Link>
               </section>
             </li>

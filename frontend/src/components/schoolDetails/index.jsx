@@ -41,9 +41,9 @@ function schoolDetail() {
             <section className="school-card__school-info">
               <img className="school-info__image" src={school?.info?.imageUrl} alt="skatepark" />
               <ul className="school-info__contact">
-                <h4>Contact</h4>
+                <h4>Contacto</h4>
                 <li>
-                  Phone:
+                  Teléfono:
                   {' '}
                   {school?.info?.phone}
                 </li>
@@ -53,7 +53,7 @@ function schoolDetail() {
                   {school?.info?.mail}
                 </li>
                 <li>
-                  Address:
+                  Dirección:
                   {' '}
                   {school?.info?.address}
                 </li>
